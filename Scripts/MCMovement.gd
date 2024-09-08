@@ -11,3 +11,8 @@ func _physics_process(_delta):
 	velocity = input_direction * move_speed
 	
 	move_and_slide()
+
+func _input(event):
+	if event.is_action_pressed("blink"):
+		position = event.position
+	
