@@ -1,12 +1,11 @@
 extends CharacterBody2D
 
-@onready var player : CharacterBody2D = get_node("/root/devel/PlayerChar")
-var target : CharacterBody2D = null
-
 @export var speed : float = 200
-@export var FOV : float = 150.0
+@export var FOV : float = 50.0
 @export var max_view_distance : float = 800.0
 @export var angle_between_rays : float = 1.0
+
+var rays : Array
 
 func generate_raycasts() -> void: 
 	FOV = deg_to_rad(FOV)
@@ -19,27 +18,20 @@ func generate_raycasts() -> void:
 		ray.target_position = Vector2.RIGHT.rotated(angle) * max_view_distance
 		add_child(ray)
 		ray.enabled = true
+		rays.append(ray)
 		
-		#var line := Line2D.new()
-		#add_child(line)
-		#line.default_color = Color(0, 1, 0, 1)
-		#line.add_point((Vector2.RIGHT.rotated(angle) * max_view_distance), 1)
-		
-
 func _ready() -> void:
 	generate_raycasts()
 
 func _draw() -> void: 
-	for ray in get_children(): 
-		if ray is RayCast2D:
-			draw_line(ray.position, ray.position + ray.target_position, Color.RED, 5.0)
+	draw_line(rays[0].position, rays[0].position + rays[0].target_position, Color.RED, 5.0)
+	draw_line(rays[-1].position, rays[-1].position + rays[-1].target_position, Color.RED, 5.0)
 
 func _physics_process(_delta):
-	target = null
-	for ray in get_children(): 
-		if ray is RayCast2D and ray.is_colliding() and ray.get_collider() is CharacterBody2D:
+	var target = null
+	for ray in rays: 
+		if ray.is_colliding() and ray.get_collider():
 			target = ray.get_collider()
-			print("seeing")
 	
 	if target != null: 
 		var direction = (target.position - position)
