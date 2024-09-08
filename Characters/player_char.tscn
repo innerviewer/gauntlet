@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://xeqfiauexu7o"]
+
+[ext_resource type="Script" path="res://Characters/MCMovement.gd" id="1_4y141"]
+[ext_resource type="Texture2D" uid="uid://22xsmvoyc5hd" path="res://Art/Factions/Knights/Troops/Warrior/Purple/Warrior_Purple.png" id="1_lg7if"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cuyd0"]
+radius = 20.0
+height = 60.0
+
+[node name="PlayerChar" type="CharacterBody2D"]
+script = ExtResource("1_4y141")
+move_speed = 1000.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lg7if")
+hframes = 6
+vframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_cuyd0")
