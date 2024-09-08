@@ -8,7 +8,7 @@
 position = Vector2(-2, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_716wf")]
-position = Vector2(243, 192)
+position = Vector2(-262, 144)
 
 [node name="Goblin" parent="." instance=ExtResource("2_efobu")]
 position = Vector2(499, 205)

@@ -1,0 +1,79 @@
+[gd_scene load_steps=4 format=3 uid="uid://dk7yhoh3r528o"]
+
+[ext_resource type="Script" path="res://Levels/MainMenu/main_menu.gd" id="1_rl8pm"]
+[ext_resource type="Texture2D" uid="uid://yedtug83rlbp" path="res://Images/background.png" id="2_lk2rs"]
+[ext_resource type="Texture2D" uid="uid://dwv6yoapdyjqi" path="res://Images/box.png" id="2_vfbq5"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+offset_left = 24.0
+offset_top = 72.0
+offset_right = 24.0
+offset_bottom = 72.0
+script = ExtResource("1_rl8pm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-22, -64)
+scale = Vector2(2.84, 2.75862)
+texture = ExtResource("2_lk2rs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -232.0
+offset_top = -168.0
+offset_right = 58.0
+offset_bottom = -37.0
+scale = Vector2(1.465, 1.465)
+
+[node name="StartButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_vfbq5")
+
+[node name="Label" type="Label" parent="VBoxContainer/StartButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.167
+anchor_top = -5.051
+anchor_right = -1.167
+anchor_bottom = -5.051
+offset_left = 398.498
+offset_top = 207.501
+offset_right = 567.498
+offset_bottom = 245.501
+text = "Start Game"
+horizontal_alignment = 1
+
+[node name="SettingsButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_vfbq5")
+
+[node name="Camera2D" type="Camera2D" parent="VBoxContainer/SettingsButton"]
+position = Vector2(144, 25)
+zoom = Vector2(0.81, 0.81)
+
+[node name="Label" type="Label" parent="VBoxContainer/SettingsButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.111
+anchor_top = -4.649
+anchor_right = -1.111
+anchor_bottom = -4.649
+offset_left = 431.405
+offset_top = 191.107
+offset_right = 493.405
+offset_bottom = 214.107
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="ExitButton" type="TextureButton" parent="VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_vfbq5")
+
+[node name="Label" type="Label" parent="VBoxContainer/ExitButton"]
+layout_mode = 0
+offset_left = 125.597
+offset_top = 4.83277
+offset_right = 165.597
+offset_bottom = 27.8328
+text = "Exit"
+horizontal_alignment = 1
