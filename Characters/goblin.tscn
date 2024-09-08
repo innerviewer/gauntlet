@@ -1,29 +1,25 @@
 [gd_scene load_steps=5 format=3 uid="uid://x5byrrjlaxee"]
 
-[ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Characters/base.tscn" id="1_77ddl"]
-[ext_resource type="Texture2D" uid="uid://cemxn0if861xd" path="res://Art/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="2_8cnvg"]
-[ext_resource type="Script" path="res://Scripts/enemy_ai.gd" id="2_g7jxv"]
+[ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Characters/Base.tscn" id="1_5x7mm"]
+[ext_resource type="Script" path="res://Classes/BaseEnemy.gd" id="2_h5hwp"]
+[ext_resource type="Texture2D" uid="uid://cemxn0if861xd" path="res://Art/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="3_0cab8"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_st3pj"]
-radius = 32.9848
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_duumk"]
+radius = 19.0
+height = 62.0
 
-[node name="goblin" instance=ExtResource("1_77ddl")]
-position = Vector2(64, -80)
-script = ExtResource("2_g7jxv")
+[node name="Goblin" instance=ExtResource("1_5x7mm")]
+script = ExtResource("2_h5hwp")
+attack_power = 10.0
+FOV = 50.0
+max_view_distance = 800.0
+angle_between_rays = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
-position = Vector2(0, 40)
-scale = Vector2(1.03571, 0.95)
-texture = ExtResource("2_8cnvg")
-hframes = 6
+texture = ExtResource("3_0cab8")
+hframes = 7
 vframes = 5
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(-16, 40)
-shape = SubResource("CircleShape2D_st3pj")
-
-[node name="Label" parent="CollisionShape2D" index="0"]
-offset_left = -24.0
-offset_right = 27.0
-text = "Goblin
-"
+position = Vector2(1, 5)
+shape = SubResource("CapsuleShape2D_duumk")

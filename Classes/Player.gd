@@ -1,8 +1,6 @@
-extends CharacterBody2D
+extends "res://Classes/BaseCharacter.gd"
 
-@export var move_speed : float = 100
 @onready var health_bar = $HealthBar
-var health = 100
 
 func _physics_process(_delta):
 	var input_direction = Vector2(
@@ -17,4 +15,3 @@ func _physics_process(_delta):
 func _input(event):
 	if event.is_action_pressed("blink"):
 		position = get_global_mouse_position()
-		

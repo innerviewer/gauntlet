@@ -1,6 +1,6 @@
-extends CharacterBody2D
+extends "res://Classes/BaseCharacter.gd"
 
-@export var speed : float = 200
+@export var attack_power : float = 10
 @export var FOV : float = 50.0
 @export var max_view_distance : float = 800.0
 @export var angle_between_rays : float = 1.0
@@ -20,6 +20,10 @@ func generate_raycasts() -> void:
 		ray.enabled = true
 		rays.append(ray)
 		
+func attack(target):
+	if target:
+		target.take_damage(attack_power) 
+		
 func _ready() -> void:
 	generate_raycasts()
 
@@ -36,5 +40,5 @@ func _physics_process(_delta):
 	if target != null: 
 		var direction = (target.position - position)
 		direction = direction.normalized()
-		velocity = direction * speed
+		velocity = direction * move_speed
 		move_and_slide() 

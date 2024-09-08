@@ -1,33 +1,24 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkmklgg82ogtm"]
+[gd_scene load_steps=5 format=3 uid="uid://dkkg34unmxlag"]
 
-[ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Characters/base.tscn" id="1_nxh61"]
-[ext_resource type="Texture2D" uid="uid://bca2e7mfuow3m" path="res://Art/Factions/Knights/Troops/Warrior/Red/Warrior_Red.png" id="2_868ri"]
-[ext_resource type="Script" path="res://Scripts/MCMovement.gd" id="2_pkkjt"]
+[ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Characters/Base.tscn" id="1_1rw4d"]
+[ext_resource type="Texture2D" uid="uid://22xsmvoyc5hd" path="res://Art/Factions/Knights/Troops/Warrior/Purple/Warrior_Purple.png" id="1_lg7if"]
+[ext_resource type="Script" path="res://Classes/Player.gd" id="2_pkkjt"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4gaqs"]
-radius = 40.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v8jit"]
+radius = 19.0
+height = 62.0
 
-[node name="Player" instance=ExtResource("1_nxh61")]
+[node name="Player" instance=ExtResource("1_1rw4d")]
 script = ExtResource("2_pkkjt")
-move_speed = 500.0
 
-[node name="Camera2D" type="Camera2D" parent="." index="0"]
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("1_lg7if")
+hframes = 6
+vframes = 8
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_v8jit")
+
+[node name="Camera2D" type="Camera2D" parent="." index="2"]
 position_smoothing_enabled = true
-
-[node name="Sprite2D" type="Sprite2D" parent="." index="1"]
-position = Vector2(-16, 0)
-scale = Vector2(1.31707, 0.834475)
-texture = ExtResource("2_868ri")
-hframes = 7
-vframes = 7
-
-[node name="CollisionShape2D" parent="." index="2"]
-position = Vector2(0, -16)
-shape = SubResource("CircleShape2D_4gaqs")
-
-[node name="Label" parent="CollisionShape2D" index="0"]
-offset_left = -24.0
-offset_top = -96.0
-offset_right = 25.0
-offset_bottom = -73.0
-text = "Player"
