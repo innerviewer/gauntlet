@@ -9,5 +9,8 @@ position = Vector2(-2, 0)
 [node name="PlayerChar" parent="." instance=ExtResource("1_716wf")]
 position = Vector2(243, 192)
 
+[node name="Camera2D" type="Camera2D" parent="PlayerChar"]
+position_smoothing_enabled = true
+
 [node name="TestEnemy" parent="." instance=ExtResource("2_epem5")]
 position = Vector2(788, 194)

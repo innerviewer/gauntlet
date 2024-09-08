@@ -14,5 +14,5 @@ func _physics_process(_delta):
 
 func _input(event):
 	if event.is_action_pressed("blink"):
-		position = event.position
+		position = get_global_mouse_position()
 	
