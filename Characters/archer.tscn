@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgjtd2emmuerj"]
+
+[ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Characters/base.tscn" id="1_k6lsf"]
+[ext_resource type="Texture2D" uid="uid://da2lhjhh1eyo5" path="res://Art/Factions/Knights/Troops/Archer/Red/Archer_Red.png" id="2_o8wia"]
+[ext_resource type="Script" path="res://Scripts/enemy_ai.gd" id="2_sjsbe"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_71b74"]
+radius = 32.0
+height = 64.0
+
+[node name="archer" instance=ExtResource("1_k6lsf")]
+script = ExtResource("2_sjsbe")
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+position = Vector2(32, -8)
+scale = Vector2(1.08333, 0.938356)
+texture = ExtResource("2_o8wia")
+hframes = 6
+vframes = 7
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_71b74")
+
+[node name="Label" parent="CollisionShape2D" index="0"]
+offset_left = -32.0
+offset_top = -72.0
+offset_right = 20.0
+offset_bottom = -49.0
+text = "Archer"
