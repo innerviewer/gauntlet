@@ -1,4 +1,4 @@
-extends "res://Classes/BaseCharacter.gd"
+extends "res://Scripts/Base.gd"
 
 @onready var health_bar = $HealthBar
 @export var base_damage : float = 10
