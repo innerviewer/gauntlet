@@ -1,4 +1,4 @@
-extends "res://Classes/BaseCharacter.gd"
+extends "res://Scripts/Base.gd"
 
 @export var attack_power : float = 10
 @export var FOV : float = 50.0

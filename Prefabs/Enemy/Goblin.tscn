@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://x5byrrjlaxee"]
 
-[ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Characters/Base.tscn" id="1_5x7mm"]
-[ext_resource type="Script" path="res://Classes/BaseEnemy.gd" id="2_h5hwp"]
+[ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Prefabs/Base.tscn" id="1_5x7mm"]
+[ext_resource type="Script" path="res://Scripts/Base/BaseEnemy.gd" id="2_h5hwp"]
 [ext_resource type="Texture2D" uid="uid://cemxn0if861xd" path="res://Art/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="3_0cab8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_duumk"]
