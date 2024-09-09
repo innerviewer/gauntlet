@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://44ywpnxt5emq"
-path="res://.godot/imported/hand_fire.png-4c5b762175c8c10957c7df3da50ab1ef.ctex"
+path="res://.godot/imported/hand_fire.png-c62b5cee5b84ae1416873ee09c229b02.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/hand_fire.png"
-dest_files=["res://.godot/imported/hand_fire.png-4c5b762175c8c10957c7df3da50ab1ef.ctex"]
+source_file="res://Art/MainMenu/hand_fire.png"
+dest_files=["res://.godot/imported/hand_fire.png-c62b5cee5b84ae1416873ee09c229b02.ctex"]
 
 [params]
 
