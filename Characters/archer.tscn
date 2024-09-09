@@ -8,7 +8,7 @@
 radius = 20.0
 height = 58.0
 
-[node name="Archer" instance=ExtResource("1_3b8hv")]
+[node name="Archer" groups=["Enemy"] instance=ExtResource("1_3b8hv")]
 script = ExtResource("2_asc7m")
 attack_power = 10.0
 FOV = 50.0
@@ -20,6 +20,6 @@ texture = ExtResource("3_7trjp")
 hframes = 8
 vframes = 7
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="1" groups=["Enemy"]]
 position = Vector2(0, 6)
 shape = SubResource("CapsuleShape2D_71b74")

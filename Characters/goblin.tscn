@@ -8,7 +8,7 @@
 radius = 19.0
 height = 62.0
 
-[node name="Goblin" instance=ExtResource("1_5x7mm")]
+[node name="Goblin" groups=["Enemy"] instance=ExtResource("1_5x7mm")]
 script = ExtResource("2_h5hwp")
 attack_power = 10.0
 FOV = 50.0
@@ -20,6 +20,6 @@ texture = ExtResource("3_0cab8")
 hframes = 7
 vframes = 5
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="1" groups=["Enemy"]]
 position = Vector2(1, 5)
 shape = SubResource("CapsuleShape2D_duumk")

@@ -34,11 +34,11 @@ func _draw() -> void:
 func _physics_process(_delta):
 	var target = null
 	for ray in rays: 
-		if ray.is_colliding() and ray.get_collider():
+		if ray.is_colliding() and ray.get_collider() and ray.get_collider().is_in_group("Player"):
 			target = ray.get_collider()
 	
 	if target != null: 
-		var direction = (target.position - position)
-		direction = direction.normalized()
+		var direction = (target.position - position).normalized()
+		rotation = direction.angle()
 		velocity = direction * move_speed
 		move_and_slide() 

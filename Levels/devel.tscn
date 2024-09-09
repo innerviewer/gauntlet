@@ -15,3 +15,9 @@ position = Vector2(499, 205)
 
 [node name="Archer" parent="." instance=ExtResource("3_c7fyk")]
 position = Vector2(427, 8)
+
+[node name="Goblin2" parent="." instance=ExtResource("2_efobu")]
+position = Vector2(401, 252)
+
+[node name="Archer2" parent="." instance=ExtResource("3_c7fyk")]
+position = Vector2(425, 105)
