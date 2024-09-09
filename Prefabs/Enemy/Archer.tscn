@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dgjtd2emmuerj"]
+
+[ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Prefabs/Base.tscn" id="1_3b8hv"]
+[ext_resource type="Script" path="res://Scripts/Base/BaseEnemy.gd" id="2_asc7m"]
+[ext_resource type="Texture2D" uid="uid://da2lhjhh1eyo5" path="res://Art/Factions/Knights/Troops/Archer/Red/Archer_Red.png" id="3_7trjp"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_71b74"]
+radius = 20.0
+height = 58.0
+
+[node name="Archer" groups=["Enemy"] instance=ExtResource("1_3b8hv")]
+script = ExtResource("2_asc7m")
+attack_power = 10.0
+FOV = 50.0
+max_view_distance = 800.0
+angle_between_rays = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_7trjp")
+hframes = 8
+vframes = 7
+
+[node name="CollisionShape2D" parent="." index="1" groups=["Enemy"]]
+position = Vector2(0, 6)
+shape = SubResource("CapsuleShape2D_71b74")

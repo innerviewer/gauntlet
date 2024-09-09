@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://x5byrrjlaxee"]
+
+[ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Prefabs/Base.tscn" id="1_5x7mm"]
+[ext_resource type="Script" path="res://Scripts/Base/BaseEnemy.gd" id="2_h5hwp"]
+[ext_resource type="Texture2D" uid="uid://cemxn0if861xd" path="res://Art/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="3_0cab8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_duumk"]
+radius = 19.0
+height = 62.0
+
+[node name="Goblin" groups=["Enemy"] instance=ExtResource("1_5x7mm")]
+script = ExtResource("2_h5hwp")
+attack_power = 10.0
+FOV = 50.0
+max_view_distance = 800.0
+angle_between_rays = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_0cab8")
+hframes = 7
+vframes = 5
+
+[node name="CollisionShape2D" parent="." index="1" groups=["Enemy"]]
+position = Vector2(1, 5)
+shape = SubResource("CapsuleShape2D_duumk")
