@@ -1,32 +1,23 @@
 [gd_scene load_steps=4 format=3 uid="uid://cb5ts80fuy6wq"]
 
-[ext_resource type="PackedScene" uid="uid://dkkg34unmxlag" path="res://Prefabs/Player.tscn" id="1_716wf"]
-[ext_resource type="PackedScene" uid="uid://x5byrrjlaxee" path="res://Prefabs/Enemy/Goblin.tscn" id="2_efobu"]
-[ext_resource type="PackedScene" uid="uid://dgjtd2emmuerj" path="res://Prefabs/Enemy/Archer.tscn" id="3_c7fyk"]
+[ext_resource type="PackedScene" uid="uid://dkkg34unmxlag" path="res://Prefabs/Player/Player.tscn" id="1_716wf"]
+[ext_resource type="PackedScene" uid="uid://chd6kg5r28e05" path="res://Prefabs/Enemy/Goblin.tscn" id="2_efobu"]
+[ext_resource type="PackedScene" uid="uid://u20ncnjxekdd" path="res://Prefabs/Enemy/Archer.tscn" id="3_c7fyk"]
 
 [node name="devel" type="Node2D"]
 position = Vector2(-2, 0)
 
 [node name="Player" parent="." instance=ExtResource("1_716wf")]
 position = Vector2(-262, 144)
-base_punch_count = 3
-
-[node name="Goblin" parent="." instance=ExtResource("2_efobu")]
-position = Vector2(499, 205)
-fov_angle = 90.0
-fov_length = 500.0
 
 [node name="Archer" parent="." instance=ExtResource("3_c7fyk")]
-position = Vector2(427, 8)
-fov_angle = 90.0
-fov_length = 500.0
-
-[node name="Goblin2" parent="." instance=ExtResource("2_efobu")]
-position = Vector2(401, 252)
-fov_angle = 90.0
-fov_length = 500.0
+position = Vector2(353, 178)
 
 [node name="Archer2" parent="." instance=ExtResource("3_c7fyk")]
-position = Vector2(425, 105)
-fov_angle = 90.0
-fov_length = 500.0
+position = Vector2(131, 141)
+
+[node name="BaseEnemy" parent="." instance=ExtResource("2_efobu")]
+position = Vector2(74, 305)
+
+[node name="BaseEnemy2" parent="." instance=ExtResource("2_efobu")]
+position = Vector2(280, 67)
