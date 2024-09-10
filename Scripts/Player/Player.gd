@@ -1,18 +1,15 @@
 extends "res://Scripts/Base.gd"
 
-@onready var health_bar = $HealthBar
+@onready var health_bar : ProgressBar = $HealthBar
+
 @export var base_damage : float = 10
+@export var base_punch_count : int = 3
 
-var damage : float = base_damage
+var punch_count : int = base_punch_count
 
-func calculate_damage(enemy_count: int) -> void:
-	if enemy_count <= 1:
-		print("Current damage: " + str(damage))
-		damage = base_damage
-		return
-	
-	damage = max(base_damage - (2 ** enemy_count), 0)
-	print("Current damage: " + str(damage))
+func calculate_punch_count(enemy_count: int) -> void:
+	punch_count = max(base_punch_count - enemy_count, 0)
+	print("Current punches: " + str(punch_count))
 
 #func _draw() -> void: 
 #	var damage_str = "Damage: " + str(damage)

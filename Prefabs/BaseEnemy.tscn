@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://soismwwjb50a"]
+
+[ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Prefabs/Base.tscn" id="1_dnn25"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_8ucj8"]
+
+[node name="BaseEnemy" instance=ExtResource("1_dnn25")]
+
+[node name="Area2D" type="Area2D" parent="." index="1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("ConvexPolygonShape2D_8ucj8")
