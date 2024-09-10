@@ -16,42 +16,44 @@ var area : Area2D = null
 var polygon_points : PackedVector2Array = []
 
 func create_cone_collision_shape() -> PackedVector2Array:
-	var half_angle = deg_to_rad(fov_angle / 2)
-	var left_point = Vector2(fov_length * cos(half_angle), fov_length * sin(half_angle))
-	var right_point = Vector2(fov_length * cos(half_angle), -fov_length * sin(half_angle))
+    var half_angle = deg_to_rad(fov_angle / 2)
+    var left_point = Vector2(fov_length * cos(half_angle), fov_length * sin(half_angle))
+    var right_point = Vector2(fov_length * cos(half_angle), -fov_length * sin(half_angle))
 
-	return [Vector2(0, 0), right_point, left_point]
-		
+    return [Vector2(0, 0), right_point, left_point]
+        
 func _ready() -> void:
-	polygon_points = create_cone_collision_shape()
-	var collision_shape : CollisionPolygon2D = CollisionPolygon2D.new()
-	collision_shape.polygon = polygon_points
-	
-	area = Area2D.new()
-	add_child(area)
-	area.add_child(collision_shape)
-	area.body_entered.connect(_on_fov_entered)
-	area.body_exited.connect(_on_fov_exited)
+    polygon_points = create_cone_collision_shape()
+    var collision_shape : CollisionPolygon2D = CollisionPolygon2D.new()
+    collision_shape.polygon = polygon_points
+    
+    area = Area2D.new()
+    add_child(area)
+    area.add_child(collision_shape)
+    area.body_entered.connect(_on_fov_entered)
+    area.body_exited.connect(_on_fov_exited)
 
 func _on_fov_entered(body: Node):
-	if body.is_in_group("Player"):
-		player_in_sight = true
+    if body.is_in_group("Player"):
+        player_in_sight = true
 
 func _on_fov_exited(body: Node):
-	if body.is_in_group("Player"):
-		player_in_sight = false
+    if body.is_in_group("Player"):
+        player_in_sight = false
 
 func _draw() -> void: 
-	dotted_line_util.draw_dotted_line(self, polygon_points[0], 
-									polygon_points[0] + polygon_points[1],
-									fov_line_spacing, fov_line_radius, fov_line_color)
-									
-	dotted_line_util.draw_dotted_line(self, polygon_points[0], 
-									polygon_points[0] + polygon_points[2],
-									fov_line_spacing, fov_line_radius, fov_line_color)
-	
+    dotted_line_util.draw_dotted_line(self, polygon_points[0], 
+                                    polygon_points[0] + polygon_points[1],
+                                    fov_line_spacing, fov_line_radius, fov_line_color)
+                                    
+    dotted_line_util.draw_dotted_line(self, polygon_points[0], 
+                                    polygon_points[0] + polygon_points[2],
+                                    fov_line_spacing, fov_line_radius, fov_line_color)
+    
 
 func _physics_process(_delta):
-	if player_in_sight:
-		velocity = ((player.position - position)).normalized() * move_speed
-		move_and_slide() 
+    if player_in_sight:
+        var direction = (player.position - position).normalized()
+        velocity = direction * move_speed
+        rotation = direction.angle()
+        move_and_slide() 

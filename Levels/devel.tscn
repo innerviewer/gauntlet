@@ -20,6 +20,7 @@ position = Vector2(995, 311)
 
 [node name="Goblin2" parent="." instance=ExtResource("3_cp6fv")]
 position = Vector2(873, -59)
+rotation = 4.58498
 
 [node name="Archer3" parent="." instance=ExtResource("3_c7fyk")]
 position = Vector2(685, 364)
