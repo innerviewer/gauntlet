@@ -1,6 +1,11 @@
 extends "res://Scripts/Base.gd"
 
 @onready var player : CharacterBody2D = get_node("/root/devel/Player")
+@onready var dotted_line_util : Object = preload("res://Scripts/Utils/DottedLine.gd").new()
+
+@export var fov_line_color : Color
+@export var fov_line_spacing : float
+@export var fov_line_radius : float
 
 @export var attack_power : float = 10
 @export var fov_angle : float = 90.0
@@ -16,10 +21,6 @@ func create_cone_collision_shape() -> PackedVector2Array:
 	var right_point = Vector2(fov_length * cos(half_angle), -fov_length * sin(half_angle))
 
 	return [Vector2(0, 0), right_point, left_point]
-		
-#func attack(target):
-	#if target:
-		#target.take_damage(attack_power) 
 		
 func _ready() -> void:
 	polygon_points = create_cone_collision_shape()
@@ -41,8 +42,14 @@ func _on_fov_exited(body: Node):
 		player_in_sight = false
 
 func _draw() -> void: 
-	draw_line(polygon_points[0], polygon_points[0] + polygon_points[1], Color.RED, 5.0)
-	draw_line(polygon_points[0], polygon_points[0] + polygon_points[2], Color.RED, 5.0)
+	dotted_line_util.draw_dotted_line(self, polygon_points[0], 
+									polygon_points[0] + polygon_points[1],
+									fov_line_spacing, fov_line_radius, fov_line_color)
+									
+	dotted_line_util.draw_dotted_line(self, polygon_points[0], 
+									polygon_points[0] + polygon_points[2],
+									fov_line_spacing, fov_line_radius, fov_line_color)
+	
 
 func _physics_process(_delta):
 	if player_in_sight:
