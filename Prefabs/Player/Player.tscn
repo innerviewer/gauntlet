@@ -16,6 +16,7 @@ radius = 355.013
 script = ExtResource("2_pkkjt")
 base_damage = 10.0
 base_punch_count = 3
+blink_range = 800
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 texture = ExtResource("1_lg7if")
