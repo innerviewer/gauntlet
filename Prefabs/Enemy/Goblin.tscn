@@ -8,6 +8,11 @@ radius = 25.0
 height = 60.0
 
 [node name="Goblin" instance=ExtResource("1_wq8xr")]
+attack_power = 10.0
+fov_angle = 90.0
+fov_length = 500.0
+health = 100.0
+move_speed = 200.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_0cab8")

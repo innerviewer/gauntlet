@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkkg34unmxlag"]
+[gd_scene load_steps=8 format=3 uid="uid://dkkg34unmxlag"]
 
 [ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Prefabs/Base.tscn" id="1_1rw4d"]
 [ext_resource type="Texture2D" uid="uid://22xsmvoyc5hd" path="res://Art/Factions/Knights/Troops/Warrior/Purple/Warrior_Purple.png" id="1_lg7if"]
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="2_pkkjt"]
 [ext_resource type="Script" path="res://Scripts/Player/DamageReductionArea.gd" id="4_6p2we"]
+[ext_resource type="Script" path="res://Scripts/Player/ThrowMechanic.gd" id="5_jrwwf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v8jit"]
 radius = 19.0
@@ -42,3 +43,12 @@ script = ExtResource("4_6p2we")
 top_level = true
 shape = SubResource("CircleShape2D_hqli0")
 debug_color = Color(1, 1, 1, 0.42)
+
+[node name="ThrowHandler" type="Control" parent="." index="5"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("5_jrwwf")
+trajectory_color = Color(1, 0, 0, 1)
+trajectory_spacing = 30.0
+trajectory_radius = 5.0
+trajectory_angle_adjustment_speed = 30.0

@@ -2,6 +2,7 @@ extends "res://Scripts/Base.gd"
 
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var collider: CollisionShape2D = $CollisionShape2D
+@onready var throw_handler: Control = $ThrowHandler
 
 @export var base_damage: float = 10
 @export var base_punch_count: int = 3
@@ -11,14 +12,9 @@ var punch_count: int = base_punch_count
 
 func calculate_punch_count(enemy_count: int) -> void:
 	punch_count = max(base_punch_count - enemy_count, 0)
-	print("Current punches: " + str(punch_count))
 
-#func _draw() -> void: 
-#	var damage_str = "Damage: " + str(damage)
-#	draw_string(ThemeDB.fallback_font, Vector2(64, 64), damage_str, HORIZONTAL_ALIGNMENT_LEFT, -1, ThemeDB.fallback_font_size)
-
-#func _process(_delta) -> void: 
-#	if 
+func _process(_delta: float) -> void:
+	throw_handler.queue_redraw()
 
 func _physics_process(_delta: float) -> void:
 	var input_direction = Vector2(

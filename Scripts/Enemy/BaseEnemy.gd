@@ -1,7 +1,6 @@
 extends "res://Scripts/Base.gd"
 
 @onready var player : CharacterBody2D = get_node("/root/devel/Player")
-@onready var trajectory_util : Object = preload("res://Scripts/Utils/Trajectory.gd").new()
 
 @export var fov_line_color : Color
 @export var fov_line_spacing : float
@@ -42,11 +41,11 @@ func _on_fov_exited(body: Node):
 		player_in_sight = false
 
 func _draw() -> void: 
-	trajectory_util.draw_dotted_line(self, polygon_points[0], 
+	UtilsSignals.emit_signal("draw_dotted_line", self, polygon_points[0], 
 									polygon_points[0] + polygon_points[1],
 									fov_line_spacing, fov_line_radius, fov_line_color)
 									
-	trajectory_util.draw_dotted_line(self, polygon_points[0], 
+	UtilsSignals.emit_signal("draw_dotted_line", self, polygon_points[0], 
 									polygon_points[0] + polygon_points[2],
 									fov_line_spacing, fov_line_radius, fov_line_color)
 	

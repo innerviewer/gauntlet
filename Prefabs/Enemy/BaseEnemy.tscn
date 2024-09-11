@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Prefabs/Base.tscn" id="1_dnn25"]
 [ext_resource type="Script" path="res://Scripts/Enemy/BaseEnemy.gd" id="2_ahq1a"]
 
-[node name="BaseEnemy" instance=ExtResource("1_dnn25")]
+[node name="BaseEnemy" groups=["Enemy"] instance=ExtResource("1_dnn25")]
 script = ExtResource("2_ahq1a")
 fov_line_color = Color(0.378754, 0.193435, 0.228914, 1)
 fov_line_spacing = 30.0
