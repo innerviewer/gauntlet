@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dkkg34unmxlag"]
+[gd_scene load_steps=9 format=3 uid="uid://dkkg34unmxlag"]
 
 [ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Prefabs/Base.tscn" id="1_1rw4d"]
 [ext_resource type="Texture2D" uid="uid://22xsmvoyc5hd" path="res://Art/Factions/Knights/Troops/Warrior/Purple/Warrior_Purple.png" id="1_lg7if"]
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="2_pkkjt"]
 [ext_resource type="Script" path="res://Scripts/Player/DamageReductionArea.gd" id="4_6p2we"]
+[ext_resource type="Script" path="res://Scripts/Player/ThrowMechanic.gd" id="5_jrwwf"]
+[ext_resource type="Script" path="res://Scripts/Utils/LineDrawer.gd" id="6_11ess"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v8jit"]
 radius = 19.0
@@ -15,6 +17,8 @@ radius = 355.013
 [node name="Player" groups=["Player"] instance=ExtResource("1_1rw4d")]
 script = ExtResource("2_pkkjt")
 base_damage = 10.0
+base_punch_count = 3
+blink_range = 800
 
 [node name="Sprite2D" type="Sprite2D" parent="." index="0"]
 texture = ExtResource("1_lg7if")
@@ -40,3 +44,14 @@ script = ExtResource("4_6p2we")
 top_level = true
 shape = SubResource("CircleShape2D_hqli0")
 debug_color = Color(1, 1, 1, 0.42)
+
+[node name="ThrowComponent" type="Control" parent="." index="5"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("5_jrwwf")
+trajectory_color = Color(1, 0, 0, 1)
+trajectory_spacing = 30.0
+trajectory_radius = 5.0
+
+[node name="LineDrawerComponent" type="Node" parent="ThrowComponent" index="0"]
+script = ExtResource("6_11ess")

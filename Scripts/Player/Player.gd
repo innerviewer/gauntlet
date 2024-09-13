@@ -1,36 +1,33 @@
 extends "res://Scripts/Base.gd"
 
-@onready var health_bar = $HealthBar
-@export var base_damage : float = 10
+@onready var health_bar: ProgressBar = $HealthBar
+@onready var collider: CollisionShape2D = $CollisionShape2D
+@onready var throw_handler: Control = $ThrowComponent
 
-var damage : float = base_damage
+@export var base_damage: float = 10
+@export var base_punch_count: int = 3
+@export var blink_range: int = 800
 
-func calculate_damage(enemy_count: int) -> void:
-	if enemy_count <= 1:
-		print("Current damage: " + str(damage))
-		damage = base_damage
-		return
-	
-	damage = max(base_damage - (2 ** enemy_count), 0)
-	print("Current damage: " + str(damage))
+var punch_count: int = base_punch_count
 
-#func _draw() -> void: 
-#	var damage_str = "Damage: " + str(damage)
-#	draw_string(ThemeDB.fallback_font, Vector2(64, 64), damage_str, HORIZONTAL_ALIGNMENT_LEFT, -1, ThemeDB.fallback_font_size)
+func calculate_punch_count(enemy_count: int) -> void:
+	punch_count = max(base_punch_count - enemy_count, 0)
 
-#func _process(_delta) -> void: 
-#	if 
+func _process(_delta: float) -> void:
+	throw_handler.queue_redraw()
 
-func _physics_process(_delta) -> void:
+func _physics_process(_delta: float) -> void:
 	var input_direction = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
-	)
+	).normalized()
 	
 	velocity = input_direction * move_speed
 	
 	move_and_slide()
 
-func _input(event) -> void:
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("blink"):
-		position = get_global_mouse_position()
+		var blink_position = get_global_mouse_position()
+		if position.distance_to(blink_position) <= blink_range:
+			position = blink_position

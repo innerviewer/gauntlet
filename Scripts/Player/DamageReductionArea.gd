@@ -11,9 +11,9 @@ func _ready():
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy"):
 		enemy_count += 1
-		player.calculate_damage(enemy_count)
+		player.calculate_punch_count(enemy_count)
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("Enemy"):
 		enemy_count -= 1
-		player.calculate_damage(enemy_count)
+		player.calculate_punch_count(enemy_count)
