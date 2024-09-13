@@ -2,7 +2,7 @@ extends "res://Scripts/Base.gd"
 
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var collider: CollisionShape2D = $CollisionShape2D
-@onready var throw_handler: Control = $ThrowHandler
+@onready var throw_handler: Control = $ThrowComponent
 
 @export var base_damage: float = 10
 @export var base_punch_count: int = 3
@@ -20,7 +20,7 @@ func _physics_process(_delta: float) -> void:
 	var input_direction = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
-	)
+	).normalized()
 	
 	velocity = input_direction * move_speed
 	

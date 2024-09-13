@@ -1,6 +1,7 @@
 extends "res://Scripts/Base.gd"
 
 @onready var player : CharacterBody2D = get_node("/root/devel/Player")
+@onready var line_drawer = $LineDrawerComponent
 
 @export var fov_line_color : Color
 @export var fov_line_spacing : float
@@ -31,6 +32,9 @@ func _ready() -> void:
 	area.add_child(collision_shape)
 	area.body_entered.connect(_on_fov_entered)
 	area.body_exited.connect(_on_fov_exited)
+	line_drawer.spacing = fov_line_spacing
+	line_drawer.color = fov_line_color
+	line_drawer.radius = fov_line_radius
 
 func _on_fov_entered(body: Node):
 	if body.is_in_group("Player"):
@@ -41,14 +45,12 @@ func _on_fov_exited(body: Node):
 		player_in_sight = false
 
 func _draw() -> void: 
-	UtilsSignals.emit_signal("draw_dotted_line", self, polygon_points[0], 
-									polygon_points[0] + polygon_points[1],
-									fov_line_spacing, fov_line_radius, fov_line_color)
-									
-	UtilsSignals.emit_signal("draw_dotted_line", self, polygon_points[0], 
-									polygon_points[0] + polygon_points[2],
-									fov_line_spacing, fov_line_radius, fov_line_color)
-	
+	line_drawer.start_point = polygon_points[0]
+	line_drawer.end_point = polygon_points[0] + polygon_points[1]
+	line_drawer.draw_dotted_line()
+
+	line_drawer.end_point = polygon_points[0] + polygon_points[2]
+	line_drawer.draw_dotted_line()
 
 func _physics_process(_delta: float):
 	if player_in_sight:
