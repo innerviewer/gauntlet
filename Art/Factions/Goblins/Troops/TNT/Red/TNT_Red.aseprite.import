@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://0mh37uqc0pnu"
+path="res://.godot/imported/TNT_Red.aseprite-1e87256d142e427110dfb473433ebc28.res"
+
+[deps]
+
+source_file="res://Art/Factions/Goblins/Troops/TNT/Red/TNT_Red.aseprite"
+dest_files=["res://.godot/imported/TNT_Red.aseprite-1e87256d142e427110dfb473433ebc28.res"]
+
+[params]
+

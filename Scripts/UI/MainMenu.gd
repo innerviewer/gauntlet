@@ -13,7 +13,7 @@ func _on_StartButton_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/devel.tscn") 
 
 func _on_SettingsButton_pressed() -> void:
-	Events.emit_signal("open_settings")
+	Events.emit_signal("pause_menu_toggle", true)
 
 func _on_ExitButton_pressed() -> void:
 	get_tree().quit()

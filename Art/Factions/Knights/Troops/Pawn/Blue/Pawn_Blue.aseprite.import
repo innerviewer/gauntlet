@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://bq52ju7hoa3x3"
+path="res://.godot/imported/Pawn_Blue.aseprite-43ec53c2cb1187f59f0aa4850d14f45a.res"
+
+[deps]
+
+source_file="res://Art/Factions/Knights/Troops/Pawn/Blue/Pawn_Blue.aseprite"
+dest_files=["res://.godot/imported/Pawn_Blue.aseprite-43ec53c2cb1187f59f0aa4850d14f45a.res"]
+
+[params]
+

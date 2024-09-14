@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctovplk4jyja8"]
+
+[ext_resource type="Script" path="res://Scripts/UI/PauseMenu.gd" id="1_gire2"]
+[ext_resource type="PackedScene" uid="uid://git04jqjl5cd" path="res://Prefabs/UI/Settings.tscn" id="2_vk1lo"]
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gire2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.113725, 0.113725, 0.113725, 0.784314)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -319.0
+offset_top = -291.0
+offset_right = 288.0
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Resume" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Resume"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Resume"
+
+[node name="Save" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Save"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Save"
+
+[node name="Settings" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Settings" parent="MarginContainer/VBoxContainer/Settings" instance=ExtResource("2_vk1lo")]
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Settings"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Settings"
+
+[node name="Exit" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Exit"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Exit"

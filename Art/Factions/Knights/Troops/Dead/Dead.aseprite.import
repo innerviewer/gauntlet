@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://da84lfq7xvfem"
+path="res://.godot/imported/Dead.aseprite-63e9841cb0ac755fe2e941d2a810c35e.res"
+
+[deps]
+
+source_file="res://Art/Factions/Knights/Troops/Dead/Dead.aseprite"
+dest_files=["res://.godot/imported/Dead.aseprite-63e9841cb0ac755fe2e941d2a810c35e.res"]
+
+[params]
+

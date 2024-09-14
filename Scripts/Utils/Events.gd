@@ -1,4 +1,4 @@
 extends Node
 
 @warning_ignore("unused_signal")
-signal open_settings()
+signal pause_menu_toggle(open: bool)

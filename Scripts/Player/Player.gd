@@ -33,4 +33,5 @@ func _input(event: InputEvent) -> void:
 			position = blink_position
 			
 	if event.is_action_pressed("ui_cancel"):
-		Events.emit_signal("open_settings")
+		get_viewport().set_input_as_handled()
+		Events.emit_signal("pause_menu_toggle", true)

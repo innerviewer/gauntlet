@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://cb5ts80fuy6wq"]
 
+[ext_resource type="PackedScene" uid="uid://ctovplk4jyja8" path="res://Prefabs/UI/PauseMenu.tscn" id="1_6jupg"]
 [ext_resource type="PackedScene" uid="uid://dkkg34unmxlag" path="res://Prefabs/Player/Player.tscn" id="1_qyri7"]
-[ext_resource type="PackedScene" uid="uid://git04jqjl5cd" path="res://Prefabs/UI/Settings.tscn" id="1_wvdjn"]
 [ext_resource type="PackedScene" uid="uid://svhdnem3dd5p" path="res://Prefabs/Enemy/Archer.tscn" id="2_ikkfv"]
 [ext_resource type="PackedScene" uid="uid://chd6kg5r28e05" path="res://Prefabs/Enemy/Goblin.tscn" id="3_gcupj"]
 
 [node name="devel" type="Node2D"]
 position = Vector2(-2, 0)
 
-[node name="Settings" parent="." instance=ExtResource("1_wvdjn")]
+[node name="PauseMenu" parent="." instance=ExtResource("1_6jupg")]
 
 [node name="Player" parent="." instance=ExtResource("1_qyri7")]
 
