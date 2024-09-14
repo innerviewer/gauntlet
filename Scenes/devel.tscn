@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cb5ts80fuy6wq"]
+
+[ext_resource type="PackedScene" uid="uid://dkkg34unmxlag" path="res://Prefabs/Player/Player.tscn" id="1_qyri7"]
+[ext_resource type="PackedScene" uid="uid://git04jqjl5cd" path="res://Prefabs/UI/Settings.tscn" id="1_wvdjn"]
+[ext_resource type="PackedScene" uid="uid://svhdnem3dd5p" path="res://Prefabs/Enemy/Archer.tscn" id="2_ikkfv"]
+[ext_resource type="PackedScene" uid="uid://chd6kg5r28e05" path="res://Prefabs/Enemy/Goblin.tscn" id="3_gcupj"]
+
+[node name="devel" type="Node2D"]
+position = Vector2(-2, 0)
+
+[node name="Settings" parent="." instance=ExtResource("1_wvdjn")]
+
+[node name="Player" parent="." instance=ExtResource("1_qyri7")]
+
+[node name="Archer" parent="." instance=ExtResource("2_ikkfv")]
+position = Vector2(766, 186)
+
+[node name="Archer2" parent="." instance=ExtResource("2_ikkfv")]
+position = Vector2(794, 36)
+
+[node name="Goblin" parent="." instance=ExtResource("3_gcupj")]
+position = Vector2(995, 311)
+
+[node name="Goblin2" parent="." instance=ExtResource("3_gcupj")]
+position = Vector2(873, -59)
+rotation = 4.58498
+
+[node name="Archer3" parent="." instance=ExtResource("2_ikkfv")]
+position = Vector2(685, 364)

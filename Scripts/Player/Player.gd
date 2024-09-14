@@ -17,7 +17,7 @@ func _process(_delta: float) -> void:
 	throw_handler.queue_redraw()
 
 func _physics_process(_delta: float) -> void:
-	var input_direction = Vector2(
+	var input_direction: Vector2 = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	).normalized()
@@ -28,6 +28,9 @@ func _physics_process(_delta: float) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("blink"):
-		var blink_position = get_global_mouse_position()
+		var blink_position: Vector2 = get_global_mouse_position()
 		if position.distance_to(blink_position) <= blink_range:
 			position = blink_position
+			
+	if event.is_action_pressed("ui_cancel"):
+		Events.emit_signal("open_settings")

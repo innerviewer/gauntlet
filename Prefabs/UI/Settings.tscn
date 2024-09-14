@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://git04jqjl5cd"]
+
+[ext_resource type="Script" path="res://Scripts/UI/Settings.gd" id="1_hg12d"]
+
+[node name="Settings" type="CanvasLayer"]
+process_mode = 3
+visible = false
+script = ExtResource("1_hg12d")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0701524, 0.0701524, 0.0701524, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0
+offset_right = 56.0
+offset_bottom = 31.0
+grow_horizontal = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="WindowMode" type="OptionButton" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+item_count = 2
+popup/item_0/text = "FullScreen"
+popup/item_1/text = "Test"
+popup/item_1/id = 1
+
+[connection signal="item_selected" from="Control/MarginContainer/VBoxContainer/WindowMode" to="." method="_on_window_mode_item_selected"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk7yhoh3r528o"]
+[gd_scene load_steps=5 format=3 uid="uid://dk7yhoh3r528o"]
 
-[ext_resource type="Script" path="res://Scripts/MainMenu/MainMenu.gd" id="1_rl8pm"]
-[ext_resource type="Texture2D" uid="uid://yedtug83rlbp" path="res://Art/MainMenu/background.png" id="2_lk2rs"]
-[ext_resource type="Texture2D" uid="uid://dwv6yoapdyjqi" path="res://Art/MainMenu/box.png" id="2_vfbq5"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/MainMenu.gd" id="1_lldkf"]
+[ext_resource type="PackedScene" uid="uid://git04jqjl5cd" path="res://Prefabs/UI/Settings.tscn" id="2_3fpc1"]
+[ext_resource type="Texture2D" uid="uid://yedtug83rlbp" path="res://Art/MainMenu/background.png" id="2_g048c"]
+[ext_resource type="Texture2D" uid="uid://dwv6yoapdyjqi" path="res://Art/MainMenu/box.png" id="3_hsqc1"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -11,12 +12,14 @@ offset_left = 24.0
 offset_top = 72.0
 offset_right = 24.0
 offset_bottom = 72.0
-script = ExtResource("1_rl8pm")
+script = ExtResource("1_lldkf")
+
+[node name="Settings" parent="." instance=ExtResource("2_3fpc1")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-22, -64)
 scale = Vector2(2.84, 2.75862)
-texture = ExtResource("2_lk2rs")
+texture = ExtResource("2_g048c")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -28,7 +31,7 @@ scale = Vector2(1.465, 1.465)
 
 [node name="StartButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_vfbq5")
+texture_normal = ExtResource("3_hsqc1")
 
 [node name="Label" type="Label" parent="VBoxContainer/StartButton"]
 layout_mode = 1
@@ -46,7 +49,7 @@ horizontal_alignment = 1
 
 [node name="SettingsButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_vfbq5")
+texture_normal = ExtResource("3_hsqc1")
 
 [node name="Camera2D" type="Camera2D" parent="VBoxContainer/SettingsButton"]
 position = Vector2(144, 25)
@@ -68,7 +71,7 @@ horizontal_alignment = 1
 
 [node name="ExitButton" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("2_vfbq5")
+texture_normal = ExtResource("3_hsqc1")
 
 [node name="Label" type="Label" parent="VBoxContainer/ExitButton"]
 layout_mode = 0

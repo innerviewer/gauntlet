@@ -1,6 +1,6 @@
 extends Control
 
-@onready var line_drawer = $LineDrawerComponent
+@onready var line_drawer: LineDrawer = $LineDrawerComponent
 
 @export var max_angle: float = 45.0 
 @export var trajectory_color : Color
@@ -48,18 +48,18 @@ func draw_curved_trajectory() -> void:
 	line_drawer.draw_dotted_curve()
 
 func adjust_curve_angle() -> void:
-	var current_mouse_position = get_local_mouse_position()
-	var mouse_movement = current_mouse_position - previous_mouse_position
+	var current_mouse_position: Vector2 = get_local_mouse_position()
+	var mouse_movement: Vector2 = current_mouse_position - previous_mouse_position
 	
 	# Get throw direction and perpendicular vectortination)
-	var throw_direction = (throw_destination - position).normalized()
-	var perpendicular_direction = Vector2(-throw_direction.y, throw_direction.x)
+	var throw_direction: Vector2 = (throw_destination - position).normalized()
+	var perpendicular_direction: Vector2 = Vector2(-throw_direction.y, throw_direction.x)
 	
 	# Project the mouse movement onto the perpendicular direction
-	var perpendicular_movement = mouse_movement.dot(perpendicular_direction)
+	var perpendicular_movement: float = mouse_movement.dot(perpendicular_direction)
 	perpendicular_movement = clamp(perpendicular_movement, -1, 1) # Clamp to avoid large jumps
 	
-	var angle_change = perpendicular_movement * trajectory_angle_adjustment_speed
+	var angle_change: float = perpendicular_movement * trajectory_angle_adjustment_speed
 	
 	curve_angle += angle_change
 	curve_angle = clamp(curve_angle, -max_angle, max_angle)

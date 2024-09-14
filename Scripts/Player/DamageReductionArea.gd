@@ -1,10 +1,10 @@
 extends Area2D
 
-@onready var player = get_node("/root/devel/Player")
+@onready var player: CharacterBody2D = get_node("/root/devel/Player")
 
 var enemy_count : int = 0
 
-func _ready():
+func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 

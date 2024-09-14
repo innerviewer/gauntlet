@@ -1,7 +1,7 @@
 extends "res://Scripts/Base.gd"
 
 @onready var player : CharacterBody2D = get_node("/root/devel/Player")
-@onready var line_drawer = $LineDrawerComponent
+@onready var line_drawer: LineDrawer = $LineDrawerComponent
 
 @export var fov_line_color : Color
 @export var fov_line_spacing : float
@@ -16,9 +16,9 @@ var area : Area2D = null
 var polygon_points : PackedVector2Array = []
 
 func create_cone_collision_shape() -> PackedVector2Array:
-	var half_angle = deg_to_rad(fov_angle / 2)
-	var left_point = Vector2(fov_length * cos(half_angle), fov_length * sin(half_angle))
-	var right_point = Vector2(fov_length * cos(half_angle), -fov_length * sin(half_angle))
+	var half_angle: float = deg_to_rad(fov_angle / 2)
+	var left_point: Vector2 = Vector2(fov_length * cos(half_angle), fov_length * sin(half_angle))
+	var right_point: Vector2 = Vector2(fov_length * cos(half_angle), -fov_length * sin(half_angle))
 
 	return [Vector2(0, 0), right_point, left_point]
 		
@@ -36,11 +36,11 @@ func _ready() -> void:
 	line_drawer.color = fov_line_color
 	line_drawer.radius = fov_line_radius
 
-func _on_fov_entered(body: Node):
+func _on_fov_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
 		player_in_sight = true
 
-func _on_fov_exited(body: Node):
+func _on_fov_exited(body: Node)  -> void:
 	if body.is_in_group("Player"):
 		player_in_sight = false
 
@@ -52,9 +52,9 @@ func _draw() -> void:
 	line_drawer.end_point = polygon_points[0] + polygon_points[2]
 	line_drawer.draw_dotted_line()
 
-func _physics_process(_delta: float):
+func _physics_process(_delta: float)  -> void:
 	if player_in_sight:
-		var direction = (player.position - position).normalized()
+		var direction: Vector2 = (player.position - position).normalized()
 		velocity = direction * move_speed
 		rotation = direction.angle()
 		move_and_slide() 
