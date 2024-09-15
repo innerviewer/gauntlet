@@ -3,6 +3,7 @@ extends "res://Scripts/Base.gd"
 @onready var health_bar: ProgressBar = $HealthBar
 @onready var collider: CollisionShape2D = $CollisionShape2D
 @onready var throw_handler: Control = $ThrowComponent
+@onready var player_camera: Camera2D = $Camera2D
 
 @export var base_damage: float = 10
 @export var base_punch_count: int = 3
@@ -35,3 +36,4 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		get_viewport().set_input_as_handled()
 		Events.emit_signal("pause_menu_toggle", true)
+		
