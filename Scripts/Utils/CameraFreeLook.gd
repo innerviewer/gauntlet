@@ -2,7 +2,7 @@ extends Camera2D
 
 @export var target_node: Node2D = null
 @export var min_zoom: float = 0.5
-@export var max_zoom: float = 1.0
+@export var max_zoom: float = 1.2
 @export var zoom_speed: float = 0.25
 
 var is_following_mouse: bool = false
@@ -39,4 +39,4 @@ func _process(_delta: float) -> void:
 		self.position = mouse_position.normalized() * mouse_position.length() * 0.5
 	else: 
 		self.zoom = Vector2.ONE
-		self.position = target_node.position
+		self.global_position = target_node.global_position
