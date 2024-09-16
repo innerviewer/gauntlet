@@ -6,12 +6,6 @@
 
 [node name="BaseEnemy" groups=["Enemy"] instance=ExtResource("1_dnn25")]
 script = ExtResource("2_ahq1a")
-fov_line_color = Color(0.378754, 0.193435, 0.228914, 1)
-fov_line_spacing = 30.0
-fov_line_radius = 5.0
-attack_power = 10.0
-fov_angle = 90.0
-fov_length = 500.0
 
-[node name="LineDrawerComponent" type="Node" parent="." index="1"]
+[node name="LineDrawerComponent" type="Node" parent="." index="0"]
 script = ExtResource("3_qoc3u")

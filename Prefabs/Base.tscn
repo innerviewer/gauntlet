@@ -1,8 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://r7v5s5tpjnel"]
+[gd_scene load_steps=4 format=3 uid="uid://r7v5s5tpjnel"]
 
 [ext_resource type="Script" path="res://Scripts/Base.gd" id="1_wychd"]
+[ext_resource type="PackedScene" uid="uid://cfflpaabtq46b" path="res://Components/HealthComponent.tscn" id="2_kr4q1"]
+[ext_resource type="PackedScene" uid="uid://bxll246rksdsy" path="res://Components/HurtboxComponent.tscn" id="3_h85lb"]
 
 [node name="Base" type="CharacterBody2D"]
 script = ExtResource("1_wychd")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="HealthComponent" parent="." instance=ExtResource("2_kr4q1")]
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_h85lb")]
+health_component = NodePath("../HealthComponent")
+
+[node name="Hurtbox" type="CollisionShape2D" parent="HurtboxComponent"]
+
+[node name="HitBox" type="CollisionShape2D" parent="."]

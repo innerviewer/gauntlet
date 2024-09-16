@@ -7,7 +7,6 @@ extends "res://Scripts/Base.gd"
 @export var fov_line_spacing : float
 @export var fov_line_radius : float
 
-@export var attack_power : float = 10
 @export var fov_angle : float = 90.0
 @export var fov_length : float = 500.0
  
@@ -58,3 +57,4 @@ func _physics_process(_delta: float)  -> void:
 		velocity = direction * move_speed + velocity_modifier
 		rotation = direction.angle()
 		move_and_slide() 
+		

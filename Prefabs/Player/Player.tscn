@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dkkg34unmxlag"]
+[gd_scene load_steps=11 format=3 uid="uid://dkkg34unmxlag"]
 
 [ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Prefabs/Base.tscn" id="1_1rw4d"]
 [ext_resource type="Texture2D" uid="uid://22xsmvoyc5hd" path="res://Art/Factions/Knights/Troops/Warrior/Purple/Warrior_Purple.png" id="1_lg7if"]
@@ -8,16 +8,19 @@
 [ext_resource type="Script" path="res://Scripts/Player/ThrowMechanic.gd" id="5_jrwwf"]
 [ext_resource type="Script" path="res://Scripts/Utils/LineDrawer.gd" id="6_11ess"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v8jit"]
-radius = 19.0
-height = 62.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqli0"]
 radius = 355.013
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nxv46"]
+radius = 30.0
+height = 72.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eejuy"]
+radius = 26.0
+height = 52.0
+
 [node name="Player" groups=["Player"] instance=ExtResource("1_1rw4d")]
 script = ExtResource("2_pkkjt")
-base_damage = 10.0
 base_punch_count = 3
 blink_range = 800
 
@@ -26,19 +29,12 @@ texture = ExtResource("1_lg7if")
 hframes = 6
 vframes = 8
 
-[node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, 2)
-shape = SubResource("CapsuleShape2D_v8jit")
-
-[node name="Camera2D" type="Camera2D" parent="." index="2"]
+[node name="Camera2D" type="Camera2D" parent="." index="1"]
 position_smoothing_enabled = true
 script = ExtResource("4_u5pcc")
 
-[node name="HealthBar" type="ProgressBar" parent="." index="3"]
-offset_right = 4.0
-offset_bottom = 27.0
-
-[node name="Area2D" type="Area2D" parent="." index="4"]
+[node name="Area2D" type="Area2D" parent="." index="2"]
+visible = false
 priority = 1
 script = ExtResource("4_6p2we")
 
@@ -47,7 +43,7 @@ top_level = true
 shape = SubResource("CircleShape2D_hqli0")
 debug_color = Color(1, 1, 1, 0.42)
 
-[node name="ThrowComponent" type="Control" parent="." index="5"]
+[node name="ThrowComponent" type="Control" parent="." index="3"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("5_jrwwf")
@@ -57,3 +53,13 @@ trajectory_radius = 5.0
 
 [node name="LineDrawerComponent" type="Node" parent="ThrowComponent" index="0"]
 script = ExtResource("6_11ess")
+
+[node name="Hurtbox" parent="HurtboxComponent" index="0"]
+position = Vector2(9, 0)
+shape = SubResource("CapsuleShape2D_nxv46")
+
+[node name="HitBox" parent="." index="6"]
+position = Vector2(-1, 4)
+shape = SubResource("CapsuleShape2D_eejuy")
+
+[connection signal="area_entered" from="HurtboxComponent" to="." method="_on_hurtbox_area_entered"]

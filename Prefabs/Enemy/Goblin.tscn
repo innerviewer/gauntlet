@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://chd6kg5r28e05"]
+[gd_scene load_steps=5 format=3 uid="uid://chd6kg5r28e05"]
 
 [ext_resource type="PackedScene" uid="uid://soismwwjb50a" path="res://Prefabs/Enemy/BaseEnemy.tscn" id="1_wq8xr"]
 [ext_resource type="Texture2D" uid="uid://cemxn0if861xd" path="res://Art/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="3_0cab8"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v6nlq"]
-radius = 25.0
-height = 60.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mkunx"]
+radius = 32.0
+height = 64.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ww2k"]
+radius = 36.0
+height = 80.0
 
 [node name="Goblin" instance=ExtResource("1_wq8xr")]
 
@@ -14,5 +18,10 @@ texture = ExtResource("3_0cab8")
 hframes = 7
 vframes = 5
 
-[node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("CapsuleShape2D_v6nlq")
+[node name="Hurtbox" parent="HurtboxComponent" index="0"]
+shape = SubResource("CapsuleShape2D_mkunx")
+
+[node name="HitBox" parent="." index="4"]
+visible = false
+position = Vector2(-3, -1)
+shape = SubResource("CapsuleShape2D_4ww2k")

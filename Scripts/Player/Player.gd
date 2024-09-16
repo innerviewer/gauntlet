@@ -1,11 +1,9 @@
 extends "res://Scripts/Base.gd"
 
-@onready var health_bar: ProgressBar = $HealthBar
-@onready var collider: CollisionShape2D = $CollisionShape2D
+@onready var collider: CollisionShape2D = $HitBox
 @onready var throw_handler: Control = $ThrowComponent
 @onready var player_camera: Camera2D = $Camera2D
 
-@export var base_damage: float = 10
 @export var base_punch_count: int = 3
 @export var blink_range: int = 800
 
@@ -36,4 +34,21 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		get_viewport().set_input_as_handled()
 		Events.emit_signal("pause_menu_toggle", true)
+
+
+# _on_hurtbox_area_entered должна быть в скрипте HurtboxComponent Оружия(перчаток)
+# связанная с сигналом area_entered()
+var attack_damage := 10.0 
+#var knockback_force := 100.0 
+#var stun_time := 1.5 
+
+func _on_hurtbox_area_entered(area: Area2D)->void:
+	if area is HurtboxComponent:
+		var hurtbox: HurtboxComponent = area
+		var attack: Attack = Attack.new()
+		attack.attack_damage = attack_damage
+		#attack.knockback_force = knockback_force
+		#attack.attack_position = global_position
+		#attack.stun_time = stun_time
 		
+		hurtbox.damage(attack)
