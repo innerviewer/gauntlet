@@ -23,7 +23,7 @@ func _physics_process(_delta: float) -> void:
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	).normalized()
 	
-	velocity = input_direction * move_speed
+	velocity = input_direction * move_speed + velocity_modifier
 	
 	move_and_slide()
 
