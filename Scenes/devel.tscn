@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cb5ts80fuy6wq"]
+[gd_scene load_steps=7 format=3 uid="uid://cb5ts80fuy6wq"]
 
 [ext_resource type="PackedScene" uid="uid://ctovplk4jyja8" path="res://Prefabs/UI/PauseMenu.tscn" id="1_6jupg"]
 [ext_resource type="PackedScene" uid="uid://dkkg34unmxlag" path="res://Prefabs/Player/Player.tscn" id="1_qyri7"]
 [ext_resource type="PackedScene" uid="uid://svhdnem3dd5p" path="res://Prefabs/Enemy/Archer.tscn" id="2_ikkfv"]
 [ext_resource type="PackedScene" uid="uid://chd6kg5r28e05" path="res://Prefabs/Enemy/Goblin.tscn" id="3_gcupj"]
 [ext_resource type="PackedScene" uid="uid://crkns324enq4f" path="res://Prefabs/Tiles/Conveyor.tscn" id="5_i3u08"]
+[ext_resource type="PackedScene" uid="uid://bhs8gwbjas0mw" path="res://Prefabs/Tiles/Sticky.tscn" id="6_51726"]
 
 [node name="devel" type="Node2D"]
 position = Vector2(-2, 0)
@@ -13,19 +14,24 @@ position = Vector2(-2, 0)
 
 [node name="Archer" parent="." instance=ExtResource("2_ikkfv")]
 position = Vector2(766, 186)
+fov_line_color = Color(0.376471, 0.192157, 0.227451, 1)
 
 [node name="Archer2" parent="." instance=ExtResource("2_ikkfv")]
 position = Vector2(794, 36)
+fov_line_color = Color(0.376471, 0.192157, 0.227451, 1)
 
 [node name="Goblin" parent="." instance=ExtResource("3_gcupj")]
 position = Vector2(995, 311)
+fov_line_color = Color(0.376471, 0.192157, 0.227451, 1)
 
 [node name="Goblin2" parent="." instance=ExtResource("3_gcupj")]
 position = Vector2(873, -59)
 rotation = 4.58498
+fov_line_color = Color(0.376471, 0.192157, 0.227451, 1)
 
 [node name="Archer3" parent="." instance=ExtResource("2_ikkfv")]
 position = Vector2(685, 364)
+fov_line_color = Color(0.376471, 0.192157, 0.227451, 1)
 
 [node name="Conveyor" parent="." instance=ExtResource("5_i3u08")]
 position = Vector2(318, 314)
@@ -41,5 +47,14 @@ rotation = 3.14159
 [node name="Conveyor4" parent="." instance=ExtResource("5_i3u08")]
 position = Vector2(147, 207)
 rotation = -1.5708
+
+[node name="Sticky" parent="." instance=ExtResource("6_51726")]
+position = Vector2(-258, 188)
+
+[node name="Sticky2" parent="." instance=ExtResource("6_51726")]
+position = Vector2(-356, -23)
+
+[node name="Sticky3" parent="." instance=ExtResource("6_51726")]
+position = Vector2(-171, -172)
 
 [node name="Player" parent="." instance=ExtResource("1_qyri7")]

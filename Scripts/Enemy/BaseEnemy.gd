@@ -54,7 +54,11 @@ func _draw() -> void:
 func _physics_process(_delta: float)  -> void:
 	if player_in_sight:
 		var direction: Vector2 = (player.position - position).normalized()
-		velocity = direction * move_speed + velocity_modifier
+		
+		velocity = direction * move_speed
+		apply_velocity_modifiers()
+		
 		rotation = direction.angle()
+		
 		move_and_slide() 
 		
