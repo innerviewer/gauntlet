@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://soismwwjb50a"]
+[gd_scene load_steps=6 format=3 uid="uid://soismwwjb50a"]
 
 [ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Prefabs/Base.tscn" id="1_dnn25"]
 [ext_resource type="Script" path="res://Scripts/Enemy/BaseEnemy.gd" id="2_ahq1a"]
+[ext_resource type="Shader" path="res://Shaders/Flash.gdshader" id="3_5jvod"]
 [ext_resource type="Script" path="res://Scripts/Utils/LineDrawer.gd" id="3_qoc3u"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jp4yw"]
+resource_local_to_scene = true
+shader = ExtResource("3_5jvod")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifer = 0.0
 
 [node name="BaseEnemy" groups=["Enemy"] instance=ExtResource("1_dnn25")]
 script = ExtResource("2_ahq1a")
@@ -14,3 +21,9 @@ fov_length = 500.0
 
 [node name="LineDrawerComponent" type="Node" parent="." index="0"]
 script = ExtResource("3_qoc3u")
+
+[node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_jp4yw")
+
+[node name="HitBox" parent="." index="2"]
+position = Vector2(0, -1)

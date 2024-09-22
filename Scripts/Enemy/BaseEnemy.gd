@@ -22,6 +22,9 @@ func create_cone_collision_shape() -> PackedVector2Array:
 	return [Vector2(0, 0), right_point, left_point]
 		
 func _ready() -> void:
+	create_fov_visualization()
+	
+func create_fov_visualization() -> void:
 	polygon_points = create_cone_collision_shape()
 	var collision_shape : CollisionPolygon2D = CollisionPolygon2D.new()
 	collision_shape.polygon = polygon_points
@@ -34,6 +37,7 @@ func _ready() -> void:
 	line_drawer.spacing = fov_line_spacing
 	line_drawer.color = fov_line_color
 	line_drawer.radius = fov_line_radius
+	
 
 func _on_fov_entered(body: Node) -> void:
 	if body.is_in_group("Player"):
@@ -61,4 +65,3 @@ func _physics_process(_delta: float)  -> void:
 		rotation = direction.angle()
 		
 		move_and_slide() 
-		

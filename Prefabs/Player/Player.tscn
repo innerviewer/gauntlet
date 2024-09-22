@@ -1,39 +1,41 @@
-[gd_scene load_steps=11 format=3 uid="uid://dkkg34unmxlag"]
+[gd_scene load_steps=13 format=3 uid="uid://dkkg34unmxlag"]
 
 [ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Prefabs/Base.tscn" id="1_1rw4d"]
-[ext_resource type="Texture2D" uid="uid://22xsmvoyc5hd" path="res://Art/Factions/Knights/Troops/Warrior/Purple/Warrior_Purple.png" id="1_lg7if"]
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="2_pkkjt"]
 [ext_resource type="Script" path="res://Scripts/Player/DamageReductionArea.gd" id="4_6p2we"]
 [ext_resource type="Script" path="res://Scripts/Utils/CameraFreeLook.gd" id="4_u5pcc"]
 [ext_resource type="Script" path="res://Scripts/Player/ThrowMechanic.gd" id="5_jrwwf"]
 [ext_resource type="Script" path="res://Scripts/Utils/LineDrawer.gd" id="6_11ess"]
+[ext_resource type="Texture2D" uid="uid://bca2e7mfuow3m" path="res://Art/Factions/Knights/Troops/Warrior/Red/Warrior_Red.png" id="8_03v6h"]
+[ext_resource type="Shader" path="res://Shaders/Flash.gdshader" id="8_f7or0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqli0"]
 radius = 355.013
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nxv46"]
-radius = 30.0
-height = 72.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vem3i"]
+resource_local_to_scene = true
+shader = ExtResource("8_f7or0")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_modifer = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eejuy"]
-radius = 26.0
-height = 52.0
+radius = 38.0
+height = 76.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nxv46"]
+radius = 41.0
+height = 82.0
 
 [node name="Player" groups=["Player"] instance=ExtResource("1_1rw4d")]
 script = ExtResource("2_pkkjt")
 base_punch_count = 3
 blink_range = 800
 
-[node name="Sprite2D" type="Sprite2D" parent="." index="0"]
-texture = ExtResource("1_lg7if")
-hframes = 6
-vframes = 8
-
-[node name="Camera2D" type="Camera2D" parent="." index="1"]
+[node name="Camera2D" type="Camera2D" parent="." index="0"]
 position_smoothing_enabled = true
 script = ExtResource("4_u5pcc")
 
-[node name="Area2D" type="Area2D" parent="." index="2"]
+[node name="Area2D" type="Area2D" parent="." index="1"]
 visible = false
 priority = 1
 script = ExtResource("4_6p2we")
@@ -43,7 +45,7 @@ top_level = true
 shape = SubResource("CircleShape2D_hqli0")
 debug_color = Color(1, 1, 1, 0.42)
 
-[node name="ThrowComponent" type="Control" parent="." index="3"]
+[node name="ThrowComponent" type="Control" parent="." index="2"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("5_jrwwf")
@@ -54,12 +56,19 @@ trajectory_radius = 5.0
 [node name="LineDrawerComponent" type="Node" parent="ThrowComponent" index="0"]
 script = ExtResource("6_11ess")
 
-[node name="Hurtbox" parent="HurtboxComponent" index="0"]
-position = Vector2(9, 0)
-shape = SubResource("CapsuleShape2D_nxv46")
+[node name="Sprite2D" parent="." index="3"]
+material = SubResource("ShaderMaterial_vem3i")
+texture = ExtResource("8_03v6h")
+hframes = 6
+vframes = 8
 
-[node name="HitBox" parent="." index="6"]
-position = Vector2(-1, 4)
+[node name="HitBox" parent="." index="4"]
+visible = false
+position = Vector2(5, 0)
 shape = SubResource("CapsuleShape2D_eejuy")
+
+[node name="Hurtbox" parent="HurtboxComponent" index="0"]
+position = Vector2(1, -1)
+shape = SubResource("CapsuleShape2D_nxv46")
 
 [connection signal="area_entered" from="HurtboxComponent" to="." method="_on_hurtbox_area_entered"]

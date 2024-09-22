@@ -1,6 +1,6 @@
 extends CharacterBody2D
+@onready var sprite: Sprite2D = $Sprite2D
 
-@export var health: float = 100
 @export var move_speed: float = 200
 var velocity_modifiers: Dictionary = {}
 
@@ -16,3 +16,10 @@ func apply_velocity_modifiers() -> void:
 			velocity *= modifier
 		elif modifier is Vector2:
 			velocity += modifier
+			
+func flash(area: Area2D) -> void:
+	if area is HurtboxComponent:
+		sprite.material.set("shader_parameter/flash_modifer", 1.0) 
+		await get_tree().create_timer(0.1).timeout
+		sprite.material.set("shader_parameter/flash_modifer", 0.0)
+			
