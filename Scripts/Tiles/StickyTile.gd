@@ -7,7 +7,7 @@ extends Node2D
 
 func _on_body_entered(body: Node2D) -> void:
 	if 'velocity_modifiers' in body:
-		body.velocity_modifiers[modifier_id] = 0.5
+		body.velocity_modifiers[modifier_id] = stickiness
 	else:
 		print("DEBUG: not movable body on the sticky tile.")
 
