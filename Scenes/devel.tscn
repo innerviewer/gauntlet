@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://cb5ts80fuy6wq"]
 
-[ext_resource type="PackedScene" uid="uid://ctovplk4jyja8" path="res://Prefabs/UI/PauseMenu.tscn" id="1_6jupg"]
+[ext_resource type="PackedScene" path="res://Prefabs/UI/PauseMenu.tscn" id="1_6jupg"]
 [ext_resource type="PackedScene" uid="uid://dkkg34unmxlag" path="res://Prefabs/Player/Player.tscn" id="1_qyri7"]
 [ext_resource type="PackedScene" uid="uid://svhdnem3dd5p" path="res://Prefabs/Enemy/Archer.tscn" id="2_ikkfv"]
 [ext_resource type="PackedScene" uid="uid://chd6kg5r28e05" path="res://Prefabs/Enemy/Goblin.tscn" id="3_gcupj"]
 [ext_resource type="PackedScene" uid="uid://crkns324enq4f" path="res://Prefabs/Tiles/Conveyor.tscn" id="5_i3u08"]
-[ext_resource type="PackedScene" uid="uid://bhs8gwbjas0mw" path="res://Prefabs/Tiles/Sticky.tscn" id="6_51726"]
+[ext_resource type="PackedScene" path="res://Prefabs/Tiles/Sticky.tscn" id="6_51726"]
 [ext_resource type="PackedScene" uid="uid://0vss66ip65g5" path="res://Prefabs/Tiles/Slippery.tscn" id="7_dkfht"]
 
 [node name="devel" type="Node2D"]

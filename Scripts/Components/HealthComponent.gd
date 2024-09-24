@@ -2,7 +2,7 @@ extends Node
 class_name HealthComponent
 
 @onready var health_bar: TextureProgressBar = $HealthBar
-@export  var MaxHealth :float = 100.0
+@export  var MaxHealth: float = 100.0
 var current_health: float
 
 func _ready() -> void:

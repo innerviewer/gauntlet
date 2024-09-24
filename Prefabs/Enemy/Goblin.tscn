@@ -1,15 +1,72 @@
-[gd_scene load_steps=8 format=3 uid="uid://chd6kg5r28e05"]
+[gd_scene load_steps=16 format=3 uid="uid://chd6kg5r28e05"]
 
 [ext_resource type="PackedScene" uid="uid://soismwwjb50a" path="res://Prefabs/Enemy/BaseEnemy.tscn" id="1_wq8xr"]
 [ext_resource type="Script" path="res://Scripts/Enemy/Goblin.gd" id="2_n5xww"]
-[ext_resource type="Texture2D" uid="uid://cemxn0if861xd" path="res://Art/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="3_0cab8"]
-[ext_resource type="Shader" path="res://Shaders/Flash.gdshader" id="3_42ipi"]
+[ext_resource type="Shader" path="res://Shaders/Flash.gdshader" id="3_j13tu"]
+[ext_resource type="Texture2D" uid="uid://cemxn0if861xd" path="res://Art/Factions/Goblins/Troops/Torch/Red/Torch_Red.png" id="4_xgsln"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i7irj"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ar2d4"]
 resource_local_to_scene = true
-shader = ExtResource("3_42ipi")
-shader_parameter/flash_color = Color(1, 0.321569, 0.266667, 1)
+shader = ExtResource("3_j13tu")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_modifer = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yj84"]
+atlas = ExtResource("4_xgsln")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10ko6"]
+atlas = ExtResource("4_xgsln")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1n1d"]
+atlas = ExtResource("4_xgsln")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_50b0p"]
+atlas = ExtResource("4_xgsln")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gepps"]
+atlas = ExtResource("4_xgsln")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvjxi"]
+atlas = ExtResource("4_xgsln")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xty7g"]
+atlas = ExtResource("4_xgsln")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ivgcp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yj84")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10ko6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1n1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_50b0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gepps")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvjxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xty7g")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ww2k"]
 radius = 20.0
@@ -22,14 +79,14 @@ height = 64.0
 [node name="Goblin" instance=ExtResource("1_wq8xr")]
 script = ExtResource("2_n5xww")
 
-[node name="Sprite2D" parent="." index="1"]
-material = SubResource("ShaderMaterial_i7irj")
-texture = ExtResource("3_0cab8")
-hframes = 7
-vframes = 5
+[node name="AnimatedSprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_ar2d4")
+sprite_frames = SubResource("SpriteFrames_ivgcp")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.246723
 
 [node name="HitBox" parent="." index="2"]
-position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_4ww2k")
 
 [node name="HurtboxComponent" parent="." index="3"]

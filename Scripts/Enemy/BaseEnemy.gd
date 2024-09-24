@@ -1,4 +1,5 @@
 extends "res://Scripts/Base.gd"
+class_name BaseEnemy
 
 @onready var player : CharacterBody2D = get_node("/root/devel/Player")
 @onready var line_drawer: LineDrawer = $LineDrawerComponent
