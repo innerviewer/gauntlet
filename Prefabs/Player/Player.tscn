@@ -284,7 +284,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_k23eo")
+}],
+"loop": false,
+"name": &"attack1",
+"speed": 20.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_e2hdn")
 }, {
@@ -295,8 +300,8 @@ animations = [{
 "texture": SubResource("AtlasTexture_504ya")
 }],
 "loop": false,
-"name": &"attack1",
-"speed": 20.0
+"name": &"attack2",
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -330,7 +335,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_ymuvk")
 }],
 "loop": false,
-"name": &"attack2",
+"name": &"attack3",
 "speed": 5.0
 }, {
 "frames": [{
@@ -517,8 +522,7 @@ debug_color = Color(1, 1, 1, 0.42)
 material = SubResource("ShaderMaterial_20318")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_etb2k")
-animation = &"attack1"
-frame = 3
+animation = &"attack2"
 script = ExtResource("9_qvdqy")
 
 [node name="HitBox" parent="." index="3"]
@@ -551,3 +555,7 @@ shape = SubResource("CapsuleShape2D_nxv46")
 
 [node name="PlayerMovementComponent" type="Node" parent="." index="8"]
 script = ExtResource("11_linet")
+
+[node name="Timer" type="Timer" parent="." index="9"]
+wait_time = 0.3
+one_shot = true
