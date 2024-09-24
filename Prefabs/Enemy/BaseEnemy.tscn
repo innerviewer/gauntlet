@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://soismwwjb50a"]
+[gd_scene load_steps=7 format=3 uid="uid://soismwwjb50a"]
 
 [ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Prefabs/Base.tscn" id="1_dnn25"]
 [ext_resource type="Script" path="res://Scripts/Enemy/BaseEnemy.gd" id="2_ahq1a"]
 [ext_resource type="Script" path="res://Scripts/Utils/LineDrawer.gd" id="3_qoc3u"]
 [ext_resource type="Shader" path="res://Shaders/Flash.gdshader" id="4_30blg"]
+[ext_resource type="Script" path="res://Scripts/Components/Enemy/EnemyMovementComponent.gd" id="5_f6v55"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cvbn8"]
 resource_local_to_scene = true
@@ -27,3 +28,6 @@ material = SubResource("ShaderMaterial_cvbn8")
 
 [node name="HitBox" parent="." index="2"]
 position = Vector2(0, -1)
+
+[node name="EnemyMovementComponent" type="Node" parent="." index="5"]
+script = ExtResource("5_f6v55")

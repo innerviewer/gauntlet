@@ -3,6 +3,7 @@ class_name BaseEnemy
 
 @onready var player : CharacterBody2D = get_node("/root/devel/Player")
 @onready var line_drawer: LineDrawer = $LineDrawerComponent
+@onready var movement_component: EnemyMovementComponent = $EnemyMovementComponent
 
 @export var fov_line_color : Color
 @export var fov_line_spacing : float
@@ -56,13 +57,6 @@ func _draw() -> void:
 	line_drawer.end_point = polygon_points[0] + polygon_points[2]
 	line_drawer.draw_dotted_line()
 
-func _physics_process(_delta: float)  -> void:
-	if player_in_sight:
-		var direction: Vector2 = (player.position - position).normalized()
-		
-		velocity = direction * move_speed
-		apply_velocity_modifiers()
-		
-		rotation = direction.angle()
-		
-		move_and_slide() 
+func _physics_process(delta: float)  -> void:
+	velocity = movement_component.process_movement(delta, player_in_sight, player)
+	move_and_slide()

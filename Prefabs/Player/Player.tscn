@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://dkkg34unmxlag"]
+[gd_scene load_steps=78 format=3 uid="uid://dkkg34unmxlag"]
 
 [ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Prefabs/Base.tscn" id="1_1rw4d"]
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="2_pkkjt"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cmgjp10bmp3u1" path="res://Art/MC/Fullmain.png" id="7_6jkgq"]
 [ext_resource type="Script" path="res://Scripts/Utils/AnimationController.gd" id="9_qvdqy"]
 [ext_resource type="Script" path="res://Scripts/Player/Sword.gd" id="10_b0od7"]
+[ext_resource type="Script" path="res://Scripts/Components/Player/PlayerMovementComponent.gd" id="11_linet"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqli0"]
 radius = 355.013
@@ -497,7 +498,6 @@ height = 64.0
 [node name="Player" groups=["Player"] instance=ExtResource("1_1rw4d")]
 script = ExtResource("2_pkkjt")
 base_punch_count = 3
-blink_range = 800
 
 [node name="Camera2D" type="Camera2D" parent="." index="0"]
 position_smoothing_enabled = true
@@ -548,3 +548,6 @@ script = ExtResource("6_11ess")
 visible = false
 position = Vector2(-1, 4)
 shape = SubResource("CapsuleShape2D_nxv46")
+
+[node name="PlayerMovementComponent" type="Node" parent="." index="8"]
+script = ExtResource("11_linet")

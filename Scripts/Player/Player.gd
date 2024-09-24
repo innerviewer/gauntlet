@@ -6,9 +6,9 @@ class_name Player
 @onready var player_camera: Camera2D = $Camera2D
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sword: Area2D = $Sword
+@onready var movement_component: PlayerMovementComponent = $PlayerMovementComponent
 
 @export var base_punch_count: int = 3
-@export var blink_range: int = 800
 
 var punch_count: int = base_punch_count
 var animation_controller: AnimationController
@@ -24,15 +24,8 @@ func calculate_punch_count(enemy_count: int) -> void:
 func _process(_delta: float) -> void:
 	throw_handler.queue_redraw()
 
-func _physics_process(_delta: float) -> void:
-	var input_direction: Vector2 = Vector2(
-		Input.get_action_strength("right") - Input.get_action_strength("left"),
-		Input.get_action_strength("down") - Input.get_action_strength("up")
-	).normalized()
-	
-	velocity = input_direction * move_speed
-	apply_velocity_modifiers()
-	
+func _physics_process(delta: float) -> void:
+	velocity = movement_component.process_movement(delta)
 	move_and_slide()
 	
 func on_animation_finished() -> void:
@@ -41,11 +34,6 @@ func on_animation_finished() -> void:
 	sword.monitoring = false
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("blink"):
-		var blink_position: Vector2 = get_global_mouse_position()
-		if position.distance_to(blink_position) <= blink_range:
-			position = blink_position
-			
 	if event.is_action_pressed("ui_cancel"):
 		get_viewport().set_input_as_handled()
 		Events.emit_signal("pause_menu_toggle", true)

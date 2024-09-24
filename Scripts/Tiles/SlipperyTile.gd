@@ -1,22 +1,15 @@
 extends Node2D
 
-@export var slipperiness: float = 2
-
-var slippery_bodies: Array = []
+@export var friction: float = 0.99
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if 'velocity_modifiers' in body:
-		body.velocity_modifiers['slippery_tile'] = slipperiness
+	if 'movement_component' in body:
+		body.movement_component.tile_entered(Globals.TileType.Slippery, friction)
 	else:
-		print("DEBUG: not movable body on the sticky tile.")
-
-func _on_body_exited(body: Node2D) -> void:
-	if 'velocity_modifiers' in body:
-		slippery_bodies.append(body)
-	else:
-		print("DEBUG: not movable body on the sticky tile.")
+		print("DEBUG: not movable body on the conveyor tile.")
 		
-func _process(delta: float) -> void:
-	for body in slippery_bodies:
-		body.velocity_modifiers['slippery_tile'] = max(body.velocity_modifiers['slippery_tile'] - delta, 1.0)
+		
+func _on_body_exited(body: Node2D) -> void: 
+	if 'movement_component' in body:
+		body.movement_component.tile_exited(Globals.TileType.Slippery, friction)

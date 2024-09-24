@@ -13,11 +13,11 @@ config_version=5
 config/name="gauntlet"
 run/main_scene="res://Scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
-config/icon="res://icon.svg"
 
 [autoload]
 
-Events="*res://Scripts/Utils/Events.gd"
+Globals="*res://Scripts/Globals.gd"
+Events="*res://Scripts/Events.gd"
 
 [debug]
 
