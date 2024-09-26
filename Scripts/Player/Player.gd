@@ -30,8 +30,7 @@ func _process(_delta: float) -> void:
 	self.queue_redraw()
 
 func _physics_process(delta: float) -> void:
-	velocity = movement_component.process_movement(delta)
-	move_and_slide()
+	movement_component.process_movement(delta)
 	
 func on_animation_finished() -> void:
 	if timer.is_stopped():

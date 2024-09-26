@@ -15,6 +15,9 @@ shader_parameter/flash_modifer = 0.0
 radius = 33.0606
 
 [node name="Base" type="CharacterBody2D"]
+motion_mode = 1
+platform_on_leave = 2
+platform_floor_layers = 0
 script = ExtResource("1_wychd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
