@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=4 uid="uid://cb5ts80fuy6wq"]
 
-[ext_resource type="PackedScene" path="res://Prefabs/UI/PauseMenu.tscn" id="1_6jupg"]
+[ext_resource type="PackedScene" uid="uid://ctovplk4jyja8" path="res://Prefabs/UI/PauseMenu.tscn" id="1_6jupg"]
 [ext_resource type="PackedScene" uid="uid://dkkg34unmxlag" path="res://Prefabs/Player/Player.tscn" id="1_qyri7"]
 [ext_resource type="PackedScene" uid="uid://svhdnem3dd5p" path="res://Prefabs/Enemy/Archer.tscn" id="2_ikkfv"]
 [ext_resource type="PackedScene" uid="uid://chd6kg5r28e05" path="res://Prefabs/Enemy/Goblin.tscn" id="3_gcupj"]
 [ext_resource type="PackedScene" uid="uid://crkns324enq4f" path="res://Prefabs/Tiles/Conveyor.tscn" id="5_i3u08"]
-[ext_resource type="PackedScene" path="res://Prefabs/Tiles/Sticky.tscn" id="6_51726"]
+[ext_resource type="PackedScene" uid="uid://bhs8gwbjas0mw" path="res://Prefabs/Tiles/Sticky.tscn" id="6_51726"]
 [ext_resource type="PackedScene" uid="uid://0vss66ip65g5" path="res://Prefabs/Tiles/Slippery.tscn" id="7_dkfht"]
 [ext_resource type="Texture2D" uid="uid://cmon785uh43sr" path="res://Art/Tilesets/mainlevbuild.png" id="7_veom2"]
 
@@ -2213,38 +2213,5 @@ rotation = 4.58498
 
 [node name="Archer3" parent="." instance=ExtResource("2_ikkfv")]
 position = Vector2(685, 364)
-
-[node name="Conveyor" parent="." instance=ExtResource("5_i3u08")]
-position = Vector2(318, 314)
-
-[node name="Conveyor2" parent="." instance=ExtResource("5_i3u08")]
-position = Vector2(313, -57)
-rotation = 1.5708
-
-[node name="Conveyor3" parent="." instance=ExtResource("5_i3u08")]
-position = Vector2(540, 139)
-rotation = 3.14159
-
-[node name="Conveyor4" parent="." instance=ExtResource("5_i3u08")]
-position = Vector2(-451, 314)
-rotation = -1.5708
-
-[node name="Sticky" parent="." instance=ExtResource("6_51726")]
-position = Vector2(-258, 188)
-
-[node name="Sticky2" parent="." instance=ExtResource("6_51726")]
-position = Vector2(-356, -23)
-
-[node name="Sticky3" parent="." instance=ExtResource("6_51726")]
-position = Vector2(-171, -172)
-
-[node name="Slippery" parent="." instance=ExtResource("7_dkfht")]
-position = Vector2(-690, 92)
-
-[node name="Slippery2" parent="." instance=ExtResource("7_dkfht")]
-position = Vector2(-570, 318)
-
-[node name="Slippery3" parent="." instance=ExtResource("7_dkfht")]
-position = Vector2(-724, -139)
 
 [node name="Player" parent="." instance=ExtResource("1_qyri7")]
