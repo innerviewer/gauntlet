@@ -13,28 +13,27 @@ enum AnimationState {
 	Attack2
 }
 
-func animation_play(state: AnimationState,sprite: AnimatedSprite2D) -> void:
+func animation_play(state: AnimationState,animation_player: AnimationPlayer) -> void:
 	match state:
 		AnimationState.Idle:
-			sprite.play(idle_name)
+			animation_player.play(idle_name)
 		AnimationState.Run:
-			sprite.play(run_name)
+			animation_player.play(run_name)
 		AnimationState.Attack1:
-			sprite.play(attack1_name)
+			animation_player.play(attack1_name)
 		AnimationState.Attack2:
-			sprite.play(attack2_name)
+			animation_player.play(attack2_name)
 		_:
 			print("Unknown animation state:", state)
 			
 
-func reset_to_idle(sprite: AnimatedSprite2D) -> void:
-	sprite.play(idle_name)
+func reset_to_idle(animation_player: AnimationPlayer) -> void:
+	animation_player.play(idle_name)
 
-func get_current_animation(sprite: AnimatedSprite2D) -> String:
+func get_current_animation(sprite: AnimationPlayer) -> String:
 	return sprite.animation
 	
-func state_input(timer: Timer,event: InputEvent,area: Area2D,sprite: AnimatedSprite2D) -> void:
+func state_input(timer: Timer,event: InputEvent,animation_player: AnimationPlayer) -> void:
 	if event.is_action_pressed(attack1_name):
 		timer.start()
-		animation_play(AnimationState.Attack1, sprite)
-		area.monitoring = true
+		animation_play(AnimationState.Attack1, animation_player)

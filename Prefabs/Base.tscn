@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://r7v5s5tpjnel"]
+[gd_scene load_steps=8 format=3 uid="uid://r7v5s5tpjnel"]
 
 [ext_resource type="Script" path="res://Scripts/Base.gd" id="1_wychd"]
 [ext_resource type="PackedScene" uid="uid://cfflpaabtq46b" path="res://Components/HealthComponent.tscn" id="2_kr4q1"]
 [ext_resource type="Shader" path="res://Shaders/Flash.gdshader" id="2_xnba8"]
 [ext_resource type="PackedScene" uid="uid://bxll246rksdsy" path="res://Components/HurtboxComponent.tscn" id="3_h85lb"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ueuqg"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ryjfl"]
 resource_local_to_scene = true
 shader = ExtResource("2_xnba8")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -14,14 +14,16 @@ shader_parameter/flash_modifer = 0.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ul36b"]
 radius = 33.0606
 
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8mwwp"]
+
 [node name="Base" type="CharacterBody2D"]
 motion_mode = 1
 platform_on_leave = 2
 platform_floor_layers = 0
 script = ExtResource("1_wychd")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-material = SubResource("ShaderMaterial_ueuqg")
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ryjfl")
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2(1, -1)
@@ -33,3 +35,8 @@ health_component = NodePath("../HealthComponent")
 [node name="Hurtbox" type="CollisionShape2D" parent="HurtboxComponent"]
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_kr4q1")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8mwwp")
+}

@@ -1,10 +1,9 @@
 extends Area2D
-class_name Sword
 
 @export var attack_damage: float = 10.0 
 @export var knockback_force: float = 100.0 
 @export var stun_time: float = 1.5 
-@onready var sword: Sword = $"."
+@onready var sword: Area2D = $"."
 
 func _ready() -> void:
 	sword.monitoring = false

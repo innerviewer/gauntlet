@@ -6,7 +6,7 @@
 [ext_resource type="Shader" path="res://Shaders/Flash.gdshader" id="4_30blg"]
 [ext_resource type="Script" path="res://Scripts/Components/Enemy/EnemyMovementComponent.gd" id="5_f6v55"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cvbn8"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_th8ca"]
 resource_local_to_scene = true
 shader = ExtResource("4_30blg")
 shader_parameter/flash_color = Color(1, 1, 1, 1)
@@ -23,11 +23,11 @@ fov_length = 500.0
 [node name="LineDrawerComponent" type="Node" parent="." index="0"]
 script = ExtResource("3_qoc3u")
 
-[node name="AnimatedSprite2D" parent="." index="1"]
-material = SubResource("ShaderMaterial_cvbn8")
+[node name="Sprite2D" parent="." index="1"]
+material = SubResource("ShaderMaterial_th8ca")
 
 [node name="HitBox" parent="." index="2"]
 position = Vector2(0, -1)
 
-[node name="EnemyMovementComponent" type="Node" parent="." index="5"]
+[node name="EnemyMovementComponent" type="Node" parent="." index="4"]
 script = ExtResource("5_f6v55")
