@@ -15,6 +15,7 @@ class_name BaseEnemy
 var player_in_sight : bool = false
 var area : Area2D = null
 var polygon_points : PackedVector2Array = []
+var draw_trajectories: bool = false
 
 func create_cone_collision_shape() -> PackedVector2Array:
 	var half_angle: float = deg_to_rad(fov_angle / 2)
@@ -50,12 +51,23 @@ func _on_fov_exited(body: Node)  -> void:
 		player_in_sight = false
 
 func _draw() -> void: 
+	if not draw_trajectories:
+		return
+		
 	line_drawer.start_point = polygon_points[0]
 	line_drawer.end_point = polygon_points[0] + polygon_points[1]
 	line_drawer.draw_dotted_line()
 
 	line_drawer.end_point = polygon_points[0] + polygon_points[2]
 	line_drawer.draw_dotted_line()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("helper_ui"):
+		draw_trajectories = true
+		self.queue_redraw()
+	elif event.is_action_released("helper_ui"):
+		draw_trajectories = false
+		self.queue_redraw()
 
 func _physics_process(delta: float)  -> void:
 	velocity = movement_component.process_movement(delta, player_in_sight, player)

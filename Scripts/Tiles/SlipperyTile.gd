@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var friction: float = 0.99
+@export var friction: float = 0.5
 
 
 func _on_body_entered(body: Node2D) -> void:

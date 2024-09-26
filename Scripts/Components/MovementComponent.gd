@@ -54,12 +54,15 @@ func apply_modifiers(delta: float, velocity: Vector2) -> Vector2:
 		if current_tiletype == Globals.TileType.Sticky: 
 			velocity_modifiers[Globals.TileType.Slippery] = 1.0
 		else:
-			velocity_modifiers[Globals.TileType.Slippery] = min(velocity_modifiers[Globals.TileType.Slippery] + (delta * 0.01), 1.0)
+			velocity_modifiers[Globals.TileType.Slippery] = min(velocity_modifiers[Globals.TileType.Slippery] + (delta), 1.0)
 	
 	if velocity_modifiers[Globals.TileType.Slippery] != 1.0:
-		slippery_velocity = slippery_velocity * velocity_modifiers[Globals.TileType.Slippery]
-		velocity = slippery_velocity
-		return velocity 
+		#slippery_velocity = slippery_velocity * velocity_modifiers[Globals.TileType.Slippery]
+		#velocity = slippery_velocity
+		#return velocity 
+		slippery_velocity = slippery_velocity + (velocity * velocity_modifiers[Globals.TileType.Slippery]).normalized()
+		velocity = slippery_velocity 
+		return velocity
 	
 	@warning_ignore("untyped_declaration")
 	for modifier in velocity_modifiers.values():

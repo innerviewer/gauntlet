@@ -22,8 +22,12 @@ func _ready() -> void:
 func calculate_punch_count(enemy_count: int) -> void:
 	punch_count = max(base_punch_count - enemy_count, 0)
 
+func _draw() -> void:
+	movement_component.draw_blink_range()
+
 func _process(_delta: float) -> void:
 	throw_handler.queue_redraw()
+	self.queue_redraw()
 
 func _physics_process(delta: float) -> void:
 	velocity = movement_component.process_movement(delta)

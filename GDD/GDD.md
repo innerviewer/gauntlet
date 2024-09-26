@@ -4,11 +4,11 @@
 
 ```
 Genre: a fast-paced 2D top-down dungeon crawler with puzzles.
-Setting: Medieval fantasy.
-References: ... (Hyperlight Drifter?)
+Setting: Medieval dark fantasy.
+References: ... (Hyperlight Drifter? Blasphemous?)
 
 Synopsis: 
-The player character is a coward that gets trapped in a dungeon and comes across living gauntlets. The gauntlets crave violence, but the player character is too scared to fully utilize them.
+The player character is a coward that gets trapped in a dungeon and comes across living gauntlets/sword?. The gauntlets/sword? crave/s violence, but the player character is too scared to fully utilize them/it.
 ```
 
 ## Controls
@@ -58,6 +58,7 @@ Each enemy has it's own clear sight radius.
 
 ### Mechanics
 
+`Backstab? Parrying`
 
 ### Parameters
 
@@ -71,7 +72,12 @@ Max throw ditance: 400?
 ## Visual/Sound
 ### Art
 
-Pixel art...
+Pixel art, black and white color palette.
+
+Some references:
+[[ref1.jpg]]
+[[ref2.jpg]]
+[[tileset_prototype.jpg]]
 
 
 ### Music
