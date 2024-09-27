@@ -6,7 +6,6 @@ class_name Player
 @onready var throw_handler: Control = $ThrowComponent
 @onready var collider: CollisionShape2D = $HitBox
 @onready var player_camera: Camera2D = $Camera2D
-@onready var sword: Area2D = $Sword
 
 @export var base_punch_count: int = 3
 
