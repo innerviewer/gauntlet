@@ -35,7 +35,9 @@ health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_kr4q1")]
 
-[node name="AnimationsComponent" parent="." node_paths=PackedStringArray("animation_player") instance=ExtResource("5_385my")]
-animation_player = NodePath("AnimationPlayer")
+[node name="AnimationsComponent" parent="." instance=ExtResource("5_385my")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationsComponent"]
+
+[node name="AnimationTree" type="AnimationTree" parent="AnimationsComponent"]
+anim_player = NodePath("../AnimationPlayer")

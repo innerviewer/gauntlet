@@ -1,18 +1,13 @@
 extends "res://Scripts/Base.gd"
 class_name Player
 
-@onready var movement_component: PlayerMovementComponent = $PlayerMovementComponent
-@onready var animations_component: AnimationConmponent = $AnimationsComponent
-@onready var throw_handler: Control = $ThrowComponent
-@onready var collider: CollisionShape2D = $HitBox
-@onready var player_camera: Camera2D = $Camera2D
-
 @export var base_punch_count: int = 3
 
-var punch_count: int = base_punch_count
+@onready var movement_component: PlayerMovementComponent = $PlayerMovementComponent
+@onready var animations_component: AnimationComponent = $AnimationsComponent
+@onready var throw_handler: Control = $ThrowComponent
 
-func _ready() -> void:
-	animations_component.animation_play(animations_component.AnimationState.Idle)
+var punch_count: int = base_punch_count
 
 func calculate_punch_count(enemy_count: int) -> void:
 	punch_count = max(base_punch_count - enemy_count, 0)

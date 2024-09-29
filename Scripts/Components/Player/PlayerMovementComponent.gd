@@ -1,11 +1,13 @@
 extends MovementComponent
 class_name PlayerMovementComponent
 
-@export var blink_range: int = 400
 @export var blink_restraint: float = 0.75
+@export var blink_range: int = 400
+
+@onready var animations_component: AnimationComponent = $"../AnimationsComponent"
+@onready var sword: Area2D = $"../Sword"
 
 var reveal_blink_range: bool = false
-
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("blink"):
@@ -31,6 +33,9 @@ func process_movement(delta: float) -> void:
 	
 	parent.velocity = velocity
 	parent.move_and_slide()
+	
+	animations_component.update_direction_animations(input_direction)
+	animations_component.update_facing_direction(input_direction,sword)
 
 func blink() -> void:
 	var blink_position: Vector2 = parent.get_global_mouse_position()

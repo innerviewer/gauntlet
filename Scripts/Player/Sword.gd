@@ -1,13 +1,13 @@
 extends Area2D
 
+@export var collision: CollisionShape2D
 @export var attack_damage: float = 10.0 
 @export var knockback_force: float = 100.0 
 @export var stun_time: float = 1.5 
-@onready var sword: Area2D = $"."
 
 func _ready() -> void:
-	sword.monitoring = false
-	sword.area_entered.connect(_on_area_entered)
+	monitoring = false
+	area_entered.connect(_on_area_entered)
 
 func _on_area_entered(area: Area2D) -> void:
 	if area is HurtboxComponent:
