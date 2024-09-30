@@ -9,8 +9,13 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_th8ca"]
 resource_local_to_scene = true
 shader = ExtResource("4_30blg")
+shader_parameter/opacity = 1.0
+shader_parameter/r = 1.0
+shader_parameter/g = 1.0
+shader_parameter/b = 1.0
+shader_parameter/mix_color = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_modifer = 0.0
+shader_parameter/flash_modifier = 0.0
 
 [node name="BaseEnemy" groups=["Enemy"] instance=ExtResource("1_dnn25")]
 script = ExtResource("2_ahq1a")

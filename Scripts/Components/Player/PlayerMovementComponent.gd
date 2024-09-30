@@ -5,6 +5,7 @@ class_name PlayerMovementComponent
 @export var blink_range: int = 400
 
 @onready var animations_component: AnimationComponent = $"../AnimationsComponent"
+@onready var shaders_component: ShaderComponent = $"../ShadersComponent"
 @onready var sword: Area2D = $"../Sword"
 
 var reveal_blink_range: bool = false
@@ -39,6 +40,7 @@ func process_movement(delta: float) -> void:
 
 func blink() -> void:
 	var blink_position: Vector2 = parent.get_global_mouse_position()
+	var start_position: Vector2 = parent.get_global_position()
 	var direction: Vector2 = blink_position - parent.position
 	var distance: float = direction.length()
 	
@@ -46,4 +48,6 @@ func blink() -> void:
 		direction = direction.normalized() * (blink_range * blink_restraint) 
 		parent.position += direction
 	else:
-		parent.position = blink_position 
+		parent.position = blink_position
+	
+	shaders_component.create_trail_effect(start_position)

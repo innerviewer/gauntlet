@@ -33,14 +33,13 @@ func animation_play(state: AnimationState) -> void:
 		_:
 			print("Unknown animation state:", state)
 
-
 func update_facing_direction(direction: Vector2,sword: Area2D) -> void:
 	if direction.x > 0:
 		sprite.flip_h = false
-		sword.scale.x = abs(sword.collision.scale.x)
+		sword.scale.x = abs(sword.scale.x)
 	elif direction.x < 0:
 		sprite.flip_h = true
-		sword.scale.x = -abs(sword.collision.scale.x)
+		sword.scale.x = -abs(sword.scale.x)
 
 func update_direction_animations(direction: Vector2) -> void:
 	animation_tree.set("parameters/move/blend_position",direction)

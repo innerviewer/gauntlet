@@ -1,16 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://r7v5s5tpjnel"]
+[gd_scene load_steps=9 format=3 uid="uid://r7v5s5tpjnel"]
 
 [ext_resource type="Script" path="res://Scripts/Base.gd" id="1_wychd"]
 [ext_resource type="PackedScene" uid="uid://cfflpaabtq46b" path="res://Components/HealthComponent.tscn" id="2_kr4q1"]
 [ext_resource type="Shader" path="res://Shaders/Flash.gdshader" id="2_xnba8"]
 [ext_resource type="PackedScene" uid="uid://bxll246rksdsy" path="res://Components/HurtboxComponent.tscn" id="3_h85lb"]
 [ext_resource type="PackedScene" uid="uid://fxejje6yglys" path="res://Components/AnimationsComponent.tscn" id="5_385my"]
+[ext_resource type="PackedScene" uid="uid://dbf8yy3fkdccd" path="res://Components/ShadersComponent.tscn" id="6_rex11"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ryjfl"]
 resource_local_to_scene = true
 shader = ExtResource("2_xnba8")
+shader_parameter/opacity = 1.0
+shader_parameter/r = 1.0
+shader_parameter/g = 1.0
+shader_parameter/b = 1.0
+shader_parameter/mix_color = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_modifer = 0.0
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ul36b"]
 radius = 33.0606
@@ -41,3 +47,5 @@ health_component = NodePath("../HealthComponent")
 
 [node name="AnimationTree" type="AnimationTree" parent="AnimationsComponent"]
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="ShadersComponent" parent="." instance=ExtResource("6_rex11")]

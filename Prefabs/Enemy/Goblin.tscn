@@ -8,8 +8,13 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qfuwp"]
 resource_local_to_scene = true
 shader = ExtResource("3_j13tu")
+shader_parameter/opacity = 1.0
+shader_parameter/r = 1.0
+shader_parameter/g = 1.0
+shader_parameter/b = 1.0
+shader_parameter/mix_color = 0.0
 shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_modifer = 0.0
+shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ww2k"]
 radius = 20.0
