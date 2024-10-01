@@ -44,10 +44,10 @@ func blink() -> void:
 	var direction: Vector2 = blink_position - parent.position
 	var distance: float = direction.length()
 	
+	shaders_component.create_trail_effect(start_position, blink_position)
+	
 	if distance > blink_range:
 		direction = direction.normalized() * (blink_range * blink_restraint) 
 		parent.position += direction
 	else:
 		parent.position = blink_position
-	
-	shaders_component.create_trail_effect(start_position)
