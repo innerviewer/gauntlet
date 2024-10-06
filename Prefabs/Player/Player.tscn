@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dkkg34unmxlag"]
+[gd_scene load_steps=37 format=3 uid="uid://dkkg34unmxlag"]
 
 [ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Prefabs/Base.tscn" id="1_1rw4d"]
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="2_pkkjt"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cmgjp10bmp3u1" path="res://Art/MC/Fullmain.png" id="7_6jkgq"]
 [ext_resource type="Script" path="res://Scripts/Player/Sword.gd" id="10_b0od7"]
 [ext_resource type="Script" path="res://Scripts/Components/Player/PlayerMovementComponent.gd" id="11_linet"]
+[ext_resource type="PackedScene" uid="uid://cmfk1fm0ve2m7" path="res://Components/TargetLockComponent.tscn" id="11_wgtbs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqli0"]
 radius = 355.013
@@ -308,3 +309,5 @@ libraries = {
 [node name="AnimationTree" parent="AnimationsComponent" index="2"]
 tree_root = SubResource("AnimationNodeStateMachine_otbol")
 parameters/move/blend_position = Vector2(0.238187, 0.245614)
+
+[node name="TargetLockComponent" parent="." index="10" instance=ExtResource("11_wgtbs")]

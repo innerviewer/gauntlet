@@ -34,5 +34,8 @@ material = SubResource("ShaderMaterial_th8ca")
 [node name="HitBox" parent="." index="2"]
 position = Vector2(0, -1)
 
+[node name="HurtboxComponent" parent="." index="3"]
+collision_layer = 3
+
 [node name="EnemyMovementComponent" type="Node" parent="." index="4"]
 script = ExtResource("5_f6v55")
