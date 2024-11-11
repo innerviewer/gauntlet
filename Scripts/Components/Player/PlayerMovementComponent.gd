@@ -9,9 +9,9 @@ class_name PlayerMovementComponent
 @onready var shaders_component: ShaderComponent = $"../ShadersComponent"
 @onready var sword: Area2D = $"../Sword"
 
+var last_direction: Vector2
 var reveal_blink_range: bool = false
 var can_blink: bool = true
-
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("blink") and can_blink:
@@ -32,14 +32,17 @@ func process_movement(delta: float) -> void:
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	).normalized()
 	
+	last_direction = input_direction
+	print(last_direction)
+	
 	var velocity: Vector2 = input_direction * move_speed
 	velocity = apply_modifiers(delta, velocity)
-	
 	parent.velocity = velocity
 	parent.move_and_slide()
 	
+	animations_component.set_direction(last_direction)
 	animations_component.update_direction_animations(input_direction)
-	animations_component.update_facing_direction(input_direction, sword)
+	#animations_component.update_facing_direction(input_direction, sword)
 
 func set_can_blink(value: bool) -> void:
 	can_blink = value
