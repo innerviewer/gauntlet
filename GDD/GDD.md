@@ -59,6 +59,7 @@ Each enemy has it's own clear sight radius.
 ### Mechanics
 
 `Backstab? Parrying`
+`Tiles that slow down/speed up/block teleportation.`
 
 ### Parameters
 
