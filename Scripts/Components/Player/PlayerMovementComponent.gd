@@ -9,9 +9,10 @@ class_name PlayerMovementComponent
 @onready var shaders_component: ShaderComponent = $"../ShadersComponent"
 @onready var sword: Area2D = $"../Sword"
 
-var last_direction: Vector2
 var reveal_blink_range: bool = false
 var can_blink: bool = true
+var input_direction: Vector2 = Vector2.ZERO
+var last_direction: Vector2 = Vector2.ZERO
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("blink") and can_blink:
@@ -26,23 +27,26 @@ func draw_blink_range() -> void:
 	if reveal_blink_range:
 		parent.draw_circle(Vector2.ZERO, blink_range, Color.LIME_GREEN, false, 1.0, true)
 
+func get_direction() -> Vector2:
+	return input_direction
+
 func process_movement(delta: float) -> void:
-	var input_direction: Vector2 = Vector2(
+	input_direction = Vector2(
 		Input.get_action_strength("right") - Input.get_action_strength("left"),
 		Input.get_action_strength("down") - Input.get_action_strength("up")
 	).normalized()
 	
-	last_direction = input_direction
-	print(last_direction)
+	animations_component.update_direction_animations(input_direction)
 	
 	var velocity: Vector2 = input_direction * move_speed
 	velocity = apply_modifiers(delta, velocity)
 	parent.velocity = velocity
 	parent.move_and_slide()
 	
-	animations_component.set_direction(last_direction)
-	animations_component.update_direction_animations(input_direction)
-	#animations_component.update_facing_direction(input_direction, sword)
+	if input_direction == Vector2.ZERO:
+		input_direction = last_direction
+	else:
+		last_direction = input_direction
 
 func set_can_blink(value: bool) -> void:
 	can_blink = value

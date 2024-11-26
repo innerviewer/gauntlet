@@ -30,5 +30,5 @@ func _input(event: InputEvent) -> void:
 		Events.emit_signal("pause_menu_toggle", true)
 		
 	if event.is_action_pressed(animations_component.attack1): 
-		animations_component.set_direction(movement_component.last_direction) 
+		animations_component.set_direction(movement_component.get_direction())
 		animations_component.state_input()

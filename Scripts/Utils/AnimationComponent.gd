@@ -10,15 +10,12 @@ class_name AnimationComponent
 @export var attack2: String = "attack2"
 @export var idle: String = "idle"
 @export var walk: String = "walk"
-var animations_direction: Vector2
+var input_direction:Vector2
 
 enum AnimationState { 
 	Attack1,
 	Attack2,
 }
-
-func set_direction(direction: Vector2) -> void:
-	animations_direction = direction
 
 func _ready() -> void:
 	animation_tree.animation_finished.connect(on_animation_finished)
@@ -29,14 +26,19 @@ func on_animation_finished(_anim_name: StringName) -> void:
 	else:
 		animation_play(AnimationState.Attack2)
 
+func set_direction(direction:Vector2) -> void:
+	input_direction = direction
+
 func animation_play(state: AnimationState) -> void:
 	match state:
 		AnimationState.Attack1:
 			animation_state.travel(attack1)
-			animation_tree.set("parameters/attack1/blend_position", animations_direction) 
+			animation_tree.set("parameters/attack1/blend_position",input_direction) 
+			print(input_direction)
 		AnimationState.Attack2:
 			animation_state.travel(attack2)
-			animation_tree.set("parameters/attack2/blend_position", animations_direction)  
+			animation_tree.set("parameters/attack2/blend_position",input_direction) 
+			print(input_direction)
 		_:
 			print("Unknown animation state:", state)
 

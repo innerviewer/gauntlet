@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dkkg34unmxlag"]
+[gd_scene load_steps=59 format=3 uid="uid://dkkg34unmxlag"]
 
 [ext_resource type="PackedScene" uid="uid://r7v5s5tpjnel" path="res://Prefabs/Base.tscn" id="1_1rw4d"]
 [ext_resource type="Script" path="res://Scripts/Player/Player.gd" id="2_pkkjt"]
@@ -343,11 +343,21 @@ animation = &"attack1_left"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4fsl5"]
 animation = &"attack1_right"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5amxf"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3j4sv"]
+animation = &"RESET"
+
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_6on0e"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_dnggp")
 blend_point_0/pos = Vector2(-1, 0)
 blend_point_1/node = SubResource("AnimationNodeAnimation_4fsl5")
 blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_5amxf")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_3j4sv")
+blend_point_3/pos = Vector2(0, -0.9)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_od5wn"]
@@ -356,11 +366,21 @@ animation = &"attack2_right"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7uc8m"]
 animation = &"attack2_left"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5w3jf"]
+animation = &"RESET"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kiywm"]
+animation = &"RESET"
+
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_lw8yt"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_od5wn")
 blend_point_0/pos = Vector2(1, 0)
 blend_point_1/node = SubResource("AnimationNodeAnimation_7uc8m")
 blend_point_1/pos = Vector2(-1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_5w3jf")
+blend_point_2/pos = Vector2(0, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_kiywm")
+blend_point_3/pos = Vector2(0, -1)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_foui1"]
@@ -509,10 +529,10 @@ libraries = {
 
 [node name="AnimationTree" parent="AnimationsComponent" index="2"]
 tree_root = SubResource("AnimationNodeStateMachine_otbol")
-parameters/attack1/blend_position = Vector2(0.00170946, 0.00389099)
+parameters/attack1/blend_position = Vector2(0.348571, 0.284768)
 parameters/attack2/blend_position = Vector2(-0.0017094, 0.0116732)
-parameters/idle/blend_position = Vector2(-0.025641, 0.634241)
-parameters/walk/blend_position = Vector2(0.302735, 0.339322)
+parameters/idle/blend_position = Vector2(-0.380952, 0.450331)
+parameters/walk/blend_position = Vector2(-0.00628579, 0.371523)
 
 [node name="TargetLockComponent" parent="." index="10" instance=ExtResource("11_wgtbs")]
 visible = false
